@@ -49,17 +49,17 @@ def Percentage_Results(Result_file):
     #
     number_attributes = 5
     
-    Total = np.ones(number_attributes).astype('int')
-    for party in Parties:
-        for i in range(number_attributes):
+    Total = np.ones(number_attributes).astype('float')
+    for i in range(number_attributes):
+        for party in Parties:    
             Total[i] += data[str(party)][i] 
-    print(Total)    
+    print('Total:',Total)    
     # Normalized Results
-    NumberTweets = np.ones(number_parties).astype('int')
-    Popularity = np.ones(number_parties).astype('int')
-    NegEmotion = np.ones(number_parties).astype('int')
-    PosEmotion = np.ones(number_parties).astype('int')
-    NeuEmotion = np.ones(number_parties).astype('int')
+    NumberTweets = np.ones(number_parties).astype('float')
+    Popularity = np.ones(number_parties).astype('float')
+    NegEmotion = np.ones(number_parties).astype('float')
+    PosEmotion = np.ones(number_parties).astype('float')
+    NeuEmotion = np.ones(number_parties).astype('float')
     i = 0
     # Result in percentage
     for party in Parties:
@@ -111,6 +111,6 @@ def Results_Graph(Result_file):
     
 # Test    
 if __name__ == "__main__":
-    Todays_Results(Tweets_per_Party=45000)
+    Todays_Results(Tweets_per_Party=1000)
     Result_File = 'results_2018-07-03.json'
     Results_Graph(Result_File)

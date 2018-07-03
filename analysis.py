@@ -9,6 +9,7 @@ import tweepy
 from textblob import TextBlob
 from translation import google
 from utils import Translate_En_2_Ur
+import numpy as np
 
 # Given a tweet data object reterived from twitter api, this will return popularity score    
 def tweet_analysis(searchQueries, maxTweetCount = 45000):  
@@ -110,7 +111,7 @@ def Sentimen_Analysis_Score(tweet_text):
 
 # Incomplete: Only naive implementation
 def Popularity(polarity, subjectivity, count_favs, count_retweets):
-    score = polarity* subjectivity+ 0.5* count_favs + 0.2* count_retweets
+    score = polarity* subjectivity + np.sign(polarity* subjectivity)*(0.5* count_favs + 0.2* count_retweets)
     return score
 
 # Test
