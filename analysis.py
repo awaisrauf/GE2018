@@ -34,7 +34,7 @@ def tweet_analysis(searchQueries, maxTweetCount = 45000):
     # else default to no upper limit, start from the most recent tweet matching the search query.
     max_id = 0
     
-    tweetCount = 0
+    NumberTweet = 0
     popCount = 0 
     negEmotionCount = 0 
     posEmotionCount = 0
@@ -42,6 +42,8 @@ def tweet_analysis(searchQueries, maxTweetCount = 45000):
     print("Analysing maximum of {0} tweets".format(maxTweets))
     for searchQuery in searchQueries:
         # Download tweets, 100 at a time
+        tweetCount = 0
+        print('#### Analysing word ', searchQuery)
         while tweetCount < maxTweets:
             try:
                 if (max_id <= 0):
@@ -75,6 +77,7 @@ def tweet_analysis(searchQueries, maxTweetCount = 45000):
                     popularity_score = Popularity(pol, sub, tweet.favorite_count,tweet.retweet_count)
                     
                     # Measureing some numbers
+                    NumberTweet += 1
                     tweetCount += 1
                     popCount += popularity_score
                     negEmotionCount += (1 if pol <0 else 0)
@@ -82,15 +85,18 @@ def tweet_analysis(searchQueries, maxTweetCount = 45000):
                     neuEmotionCount += (1 if pol==0 else 0)
                     
                 print(tweetCount,popCount, negEmotionCount, posEmotionCount,neuEmotionCount )
-                print("Analyzed {0} tweets".format(tweetCount))
+                print("Analyzed {0} tweets".format(NumberTweet))
                 max_id = new_tweets[-1].id
                 
             except tweepy.TweepError as e:
                 # Just exit if any error
                 print("some error : " + str(e))
                 break
-            
-    return tweetCount,popCount, negEmotionCount, posEmotionCount,neuEmotionCount
+    # Normalization of results
+    popCount, negEmotionCount =  popCount/NumberTweet, negEmotionCount/NumberTweet
+    posEmotionCount, neuEmotionCount = posEmotionCount/NumberTweet,neuEmotionCount/NumberTweet  
+    
+    return NumberTweet,popCount, negEmotionCount, posEmotionCount,neuEmotionCount
 
 # returns sentiment analysis score
 def Sentimen_Analysis_Score(tweet_text):
@@ -104,7 +110,7 @@ def Sentimen_Analysis_Score(tweet_text):
 
 # Incomplete: Only naive implementation
 def Popularity(polarity, subjectivity, count_favs, count_retweets):
-    score = polarity* subjectivity+ 0.5* count_favs + 0.01* count_retweets
+    score = polarity* subjectivity+ 0.5* count_favs + 0.2* count_retweets
     return score
 
 # Test
