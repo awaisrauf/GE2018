@@ -5,99 +5,83 @@ Created on Tue Jul  3 02:44:09 2018
 @author: Spider Lab
 """
 
-import tweepy 
 from textblob import TextBlob
-from translation import google
-from utils import Translate_En_2_Ur
+from utils import Translate_En_2_Ur,Download_Tweets
 import numpy as np
 
 # Given a tweet data object reterived from twitter api, this will return popularity score    
-def tweet_analysis(searchQueries, maxTweetCount = 45000):  
-    #access_token	= '761224452-TNVgkYbrSH5UgE3ATZZrgs7vdvk3Bfzq4EruXoRh'
-    #access_token_secret = 'mDi0z5wYRBJiNXZONCCfqO3kWeuwVb1FYV6GlLnKTgEF9'
-    
-    consumer_key = 	'1jWvoRUhffZvJnFm22pqHy5gA'
-    consumer_secret ='8F07pwmZVusewI4qa9JpnVw2OMmGRVjvHflkFjMhntZfWpT5um'
-    
-    auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
-    #auth.set_access_token(access_token, access_token_secret)
-    api = tweepy.API(auth, wait_on_rate_limit=True,wait_on_rate_limit_notify=True)
+def tweet_analysis(searchWords, maxTweetCount = 5000, Location = None):  
+    #
     # Maximum number of tweets to be scrapped for queries
-    maxTweets = int(maxTweetCount/len(searchQueries)) 
-    tweetsPerQry = 100  # this is the max the API permits
-    
-    
+    maxTweetsPerWord = int(maxTweetCount/len(searchWords)) 
     # If results from a specific ID onwards are reqd, set since_id to that ID.
     # else default to no lower limit, go as far back as API allows
     sinceId = None
-    
     # If results only below a specific ID are, set max_id to that ID.
     # else default to no upper limit, start from the most recent tweet matching the search query.
     max_id = 0
-    
-    NumberTweet = 0
+    countTweetsTotal = 1  # To avoid divison by zero
+    countUrduTweets = 0
     popCount = 0 
     negEmotionCount = 0 
     posEmotionCount = 0
     neuEmotionCount = 0
-    print("Analysing maximum of {0} tweets".format(maxTweets))
-    for searchQuery in searchQueries:
-        # Download tweets, 100 at a time
-        tweetCount = 0
-        print('#### Analysing word ', searchQuery)
-        while tweetCount < maxTweets:
-            try:
-                if (max_id <= 0):
-                    if (not sinceId):
-                        new_tweets = api.search(q=searchQuery, count=tweetsPerQry, result_type = 'recent')
-                    else:
-                        new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
-                                                since_id=sinceId,result_type = 'recent')
-                else:
-                    if (not sinceId):
-                        new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
-                                                max_id=str(max_id - 1),result_type = 'recent')
-                    else:
-                        new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
-                                                max_id=str(max_id - 1),
-                                                since_id=sinceId, result_type = 'recent')
-                if not new_tweets:
-                    print("No more tweets found")
-                    break
-                
-                # Tweet analysis
-                for tweet in new_tweets:
-                    # Translation
-                    if tweet.lang == 'ur':
-                        tweet_text = Translate_En_2_Ur(tweet.text)
-                    else:
-                        tweet_text = tweet.text
-                        
-                    # Analysis    
-                    pol, sub = Sentimen_Analysis_Score(tweet_text)      
-                    popularity_score = Popularity(pol, sub, tweet.favorite_count,tweet.retweet_count)
-                    
-                    # Measureing some numbers
-                    NumberTweet += 1
-                    tweetCount += 1
-                    popCount += popularity_score
-                    negEmotionCount += (1 if pol <0 else 0)
-                    posEmotionCount += (1 if pol>0 else 0) 
-                    neuEmotionCount += (1 if pol==0 else 0)
-                    
-                print(tweetCount,popCount, negEmotionCount, posEmotionCount,neuEmotionCount )
-                print("Analyzed {0} tweets".format(NumberTweet))
-                max_id = new_tweets[-1].id
-                
-            except tweepy.TweepError as e:
-                # Just exit if any error
-                print("some error : " + str(e))
-                break
-    # Normalization of results
-    popCount, negEmotionCount =  popCount/NumberTweet, negEmotionCount/NumberTweet
-    posEmotionCount, neuEmotionCount = posEmotionCount/NumberTweet,neuEmotionCount/NumberTweet  
     
-    return NumberTweet,popCount, negEmotionCount, posEmotionCount,neuEmotionCount
+    
+    print("Analysing maximum of {0} tweets".format(maxTweetsPerWord))
+    for searchWord in searchWords:
+        
+        countTweetsPerWord = 0
+        print('#### Analysing word ', searchWord)
+        while countTweetsPerWord < maxTweetsPerWord:
+            new_tweets = Download_Tweets(searchWord, max_id, sinceId, Location = Location )
+            # To cope with slow internet connection
+            while(new_tweets == 'Error'):
+                new_tweets = Download_Tweets(searchWord, max_id, sinceId, Location = Location )
+                
+            if not new_tweets:
+                print("No more tweets found")
+                break
+            
+            # Analysis
+            for tweet in new_tweets:                    
+                # Translation
+                if tweet.lang == 'ur':
+                    tweet_text = Translate_En_2_Ur(tweet.text)
+                    countUrduTweets +=1
+                else:
+                    tweet_text = tweet.text
+                    
+                # Analysis    
+                pol, sub = Sentimen_Analysis_Score(tweet_text)      
+                popularity_score = Popularity(pol, sub, tweet.favorite_count,tweet.retweet_count)
+                
+                # Measureing some numbers
+                countTweetsPerWord += 1
+                popCount += popularity_score
+                negEmotionCount += (1 if pol <  0   else 0)
+                posEmotionCount += (1 if pol >  0   else 0) 
+                neuEmotionCount += (1 if pol == 0   else 0)
+       
+            print("Analyzed {0} tweets".format(countTweetsPerWord))   
+            print('One Instance Stats:',countTweetsPerWord, countUrduTweets, popCount,negEmotionCount, posEmotionCount,neuEmotionCount )      
+            max_id = new_tweets[-1].id
+        countTweetsTotal += countTweetsPerWord 
+            
+            
+        
+        print('All Words Stats:',countTweetsTotal,popCount, negEmotionCount, posEmotionCount,neuEmotionCount )
+                
+        
+    # Normalization of results
+    popCount, negEmotionCount =  popCount/countTweetsTotal, negEmotionCount/countTweetsTotal
+    posEmotionCount, neuEmotionCount = posEmotionCount/countTweetsTotal,neuEmotionCount/countTweetsTotal  
+    
+    return countTweetsTotal,countUrduTweets, popCount, negEmotionCount, posEmotionCount,neuEmotionCount
+
+
+
+
 
 # returns sentiment analysis score
 def Sentimen_Analysis_Score(tweet_text):
@@ -111,9 +95,13 @@ def Sentimen_Analysis_Score(tweet_text):
 
 # Incomplete: Only naive implementation
 def Popularity(polarity, subjectivity, count_favs, count_retweets):
-    score = polarity* subjectivity + np.sign(polarity* subjectivity)*(0.5* count_favs + 0.2* count_retweets)
+    score = (polarity)*(0.02* count_favs + 0.01* count_retweets)
+    # More subjective a tweet is, more strong it is for voting patters
+    score = subjectivity * score
     return score
 
 # Test
 if __name__ == "__main__":
-    tweet_analysis(['PTI','Imran'], maxTweetCount = 300)
+    print(Sentimen_Analysis_Score("I love you bob said the idiot who was so fuckingly idotic"))
+    a,b,c,d,e = tweet_analysis(['PTI','ldsfs djfdlsjf jfldsjfldjflsdjf'], maxTweetCount = 100)
+    print(a,b,c,d,e)

@@ -6,79 +6,115 @@ Created on Tue Jul  3 06:35:07 2018
 """
 from analysis import tweet_analysis
 from matplotlib import pyplot as plt
+from utils import Save_as_JSON, Data_Conversion_Party_2_Attributes
 import datetime
 import json
 import numpy as np
+import os.path
 
-number_parties = 5
+number_parties = 4
+number_attributes = 6
+now = datetime.datetime.now()
 
-def Todays_Results(Tweets_per_Party=45000):
-    now = datetime.datetime.now()
-    PTI  = ['PTI', 'Tehreek-e-Insaf', 'Imran Khan','KPK']
-    PMLN  = ['PMLN','PML-N', 'Nawaz Sharif', 'Maryam Nawaz Sharif', 'Shehbaz Sharif', 'Punjab']
-    PPP  = ['PPP', 'Bilawal Bhutto','Asif Ali Zardari', 'Benazir Bhutto', 'Sindh']
-    MQM  = ['MQM','Muttahida Qaumi Movement','MQM-P', 'Altaf Hussain','Khalid Maqbool Siddiqui','Farooq Sattar','Karachi']
-    MMA  = ['MMA', 'JUI-F','JI','Jamat-e-Islami','Siraj ul Haq', 'Fuzal ur Rehman','Muttahida Majlis-e-Amal']
+def Election_Results(save_folder,Tweets_per_Party=5000 , Location = None):
+    
+    # Important Constituncies Names shoudl also be added
+    PTI  = ['PTI', 'Tehreek-e-Insaf', 'Vote4Bat','Imran Khan','IK','WazeereAzamImranKhan','Naya Pakistan','tabdeeli','kaptaan','Khyber Pakhtunkhwa', 'Peshawar']
+    PMLN = ['PMLN','PML-N',"Vote4Sher", 'Nawaz Sharif', 'MNS','Maryam Nawaz Sharif', 'Shehbaz Sharif','Ahsan Iqbal','N League', 'Punjab', 'Lahore']
+    PPP  = ['PPP','Pakistan People Party ','Vote4Teer', 'Bilawal Bhutto','Asif Ali Zardari','AAZ', 'Benazir Bhutto', 'Bhutto','Sindh', 'Larkana']
+    MQM  = ['MQM','Muttahida Qaumi Movement','MQM-P','Muttahida','APMSO','Vote4Kite', 'Altaf Hussain','Khalid Maqbool Siddiqui','Farooq Sattar','Karachi']
+    #MMA  = ['MMA', 'JUIF','JUI-F','JI','Jamat-e-Islami','Siraj ul Haq', 'Fuzal ur Rehman','Muttahida Majlis-e-Amal', 'FATA']
     #ANP  = ['ANP','Awami National Party','Awami National Party','Asfandyar Wali Khan ']
     
-    Parties  = [PTI ,PMLN , PPP , MQM  ,MMA  ]
-    Results = {'PTI':[] ,'PMLN':[] , 'PPP':[] , 'MQM':[]  ,'MMA':[] }
-    save_result_file = 'results_' + str(now.date())+'.json'
-    
+    Parties  = [PTI ,PMLN , PPP , MQM    ]
+    Results_Party_wise = {'PTI':[] ,'PMLN':[] , 'PPP':[] , 'MQM':[]   }    
     
     for Party in Parties:
         print('++++++++++++++++++++++')
         print('Analysing ',Party[0])
         print('++++++++++++++++++++++')
-        TC, PC, NEC, PEC,NeEC = tweet_analysis(Party, maxTweetCount = Tweets_per_Party)
-        Results[Party[0]] = [TC, PC, NEC, PEC,NeEC]
-    # Save Results    
-    with open( save_result_file, "w") as write_file:
-        json.dump(Results, write_file)
-    print('Results Saved in ', save_result_file)
+        TC,UrC, PC, NEC, PEC,NeEC = tweet_analysis(Party, maxTweetCount = Tweets_per_Party)
+        Results_Party_wise[Party[0]] = [TC,UrC, PC, NEC, PEC,NeEC]
+    print('Resuts that will be saved in json file',Results_Party_wise)  
     
+ 
+    attrs = ['NumberTweets', 'UrduTweets','Popularity', 'NegEmotion', 'PosEmotion', 'NeuEmotion']
+    # Save Results   
+    Results_new = Data_Conversion_Party_2_Attributes(Results_Party_wise)
+    save_result_path = 'results/'+save_folder+'/' +'original/'+ str(now.date())+'.json'
+    
+    Results = {}
+    # if file already exists then load the data and sum both.
+    if(os.path.isfile(save_result_path)):
+        # Load Results from relative file
+        with open(save_result_path) as json_data:
+            Results_old = json.load(json_data)
+        # Sum both of the results
+        for attr in attrs:
+            Results[attr] = (np.array(Results_old[attr]) + np.array(Results_new[attr])).tolist() 
+    else:
+        Results = Results_new
+        
+    Save_as_JSON(save_result_path, Results)
+    # Save after making its percentage
+    Percentage_Results_Save(Results ,save_folder)    
     
 ###### #########################################   
-def Percentage_Results(Result_file): 
+def Percentage_Results_Save(Results_dict ,folder): 
     
-    with open(Result_File, "r") as read_file:
-        data = json.load(read_file)
+    data = Results_dict
+    attrs = ['NumberTweets', 'UrduTweets','Popularity', 'NegEmotion', 'PosEmotion', 'NeuEmotion']
     assert(type(data) == dict)
-    Parties  = ['PTI' ,'PMLN' , 'PPP' , 'MQM'  ,'MMA' ]
-    print(data)
-    #
-    number_attributes = 5
-    
+
     Total = np.ones(number_attributes).astype('float')
-    for i in range(number_attributes):
-        for party in Parties:    
-            Total[i] += data[str(party)][i] 
-    print('Total:',Total)    
-    # Normalized Results
-    NumberTweets = np.ones(number_parties).astype('float')
-    Popularity = np.ones(number_parties).astype('float')
-    NegEmotion = np.ones(number_parties).astype('float')
-    PosEmotion = np.ones(number_parties).astype('float')
-    NeuEmotion = np.ones(number_parties).astype('float')
     i = 0
-    # Result in percentage
-    for party in Parties:
-        NumberTweets[i] = (data[party][0]/Total[0])*100
-        Popularity[i] = (data[party][1]/Total[1])*100
-        NegEmotion[i] = (data[party][2]/Total[2])*100
-        PosEmotion[i] = (data[party][3]/Total[3])*100
-        NeuEmotion[i] = (data[party][4]/Total[4])*100
+    for attr in attrs:
+        Total[i] = np.sum( np.abs(np.array( data[attr]) ) )
         i+=1
-    return NumberTweets,Popularity ,NegEmotion, PosEmotion, NeuEmotion
+    Total = np.array(Total)   
+ 
+    NumberTweets = np.zeros(number_parties).astype('float')
+    UrduTweets = np.zeros(number_parties).astype('float')
+    Popularity = np.zeros(number_parties).astype('float')
+    NegEmotion = np.zeros(number_parties).astype('float')
+    PosEmotion = np.zeros(number_parties).astype('float')
+    NeuEmotion = np.zeros(number_parties).astype('float')
+    # Result in percentage    
+    NumberTweets = (np.array( data[attrs[0]] ) / Total[0]) *100
+    UrduTweets =   (np.array( data[attrs[1]] ) / Total[1]) *100
+    Popularity =   (np.array( data[attrs[2]] ) / Total[2]) *100
+    NegEmotion =   (np.array( data[attrs[3]] ) / Total[3]) *100
+    PosEmotion =   (np.array( data[attrs[4]] ) / Total[4]) *100
+    NeuEmotion =   (np.array( data[attrs[5]] ) / Total[5]) *100
+                    
+    Results = {'NumberTweets':NumberTweets.tolist(), 'UrduTweets':UrduTweets.tolist(),'Popularity':Popularity.tolist(), 'NegEmotion':NegEmotion.tolist(), 
+               'PosEmotion':PosEmotion.tolist(), 'NeuEmotion':NeuEmotion.tolist()}
+    print(Results)
+        
+    # Save Results
+    save_result_path = 'results/'+folder+'/' +'percentage/'+ str(now.date())+'.json'
+    Save_as_JSON(save_result_path, Results)
+       
+    return save_result_path
 
     
 ### Graph Results    
-def Results_Graph(Result_file):
-    NumberTweets, Popularity ,NegEmotion, PosEmotion, NeuEmotion = Percentage_Results(Result_file)
-    Parties  = ['PTI' ,'PMLN' , 'PPP' , 'MQM'  ,'MMA'  ]
-
-    plt.bar(Parties,Popularity)
-    plt.savefig('results/pop_graph.png', dpi = 300)   
+def Results_Graph(Result_path):
+    
+    ## Load Results from relative file
+    with open(Result_path) as json_data:
+        Results = json.load(json_data)
+    # Retrive variables from dictionary    
+    NumberTweets = Results['NumberTweets']
+    UrduTweets = Results['UrduTweets']
+    Popularity = Results['Popularity']
+    PosEmotion = Results['PosEmotion']
+    NegEmotion = Results['NegEmotion']
+    NeuEmotion = Results['NeuEmotion']
+#        
+    Parties  = ['PTI' ,'PMLN' , 'PPP' , 'MQM' ]
+    plt.bar(Parties,Popularity,0.3)
+    plt.savefig('graphs/pop_graph.png', dpi = 300)   
     
     index = np.arange(number_parties)
     bar_width = 0.15
@@ -91,12 +127,15 @@ def Results_Graph(Result_file):
     rects2 = ax.bar(index - bar_width, PosEmotion, bar_width,
                 alpha=opacity, color='g',
                 label='Positive Emotion')
-    rects3 = ax.bar(index + bar_width, PosEmotion, bar_width,
+    rects3 = ax.bar(index + bar_width, NeuEmotion, bar_width,
                 alpha=opacity, color='b',
                 label='Neutral Emotion')
-    rects4 = ax.bar(index + 2*bar_width, PosEmotion, bar_width,
+    rects4 = ax.bar(index + 2*bar_width, NumberTweets, bar_width,
                 alpha=opacity, color='y',
                 label='Total Tweets')
+    rects4 = ax.bar(index + 3*bar_width, UrduTweets, bar_width,
+                alpha=opacity, color='',
+                label='Urdu Tweets')
     
     ax.set_xlabel('Political Parties')
     ax.set_ylabel('Percentage')
@@ -106,11 +145,10 @@ def Results_Graph(Result_file):
     ax.legend()
     
     fig.tight_layout()
-    plt.savefig('results/emt_graph.png',dpi=200)
+    plt.savefig('graphs/emt_graph.png',dpi=200)
     plt.show()
     
 # Test    
 if __name__ == "__main__":
-    Todays_Results(Tweets_per_Party=1000)
-    Result_File = 'results_2018-07-03.json'
-    Results_Graph(Result_File)
+    pass
+    #Election_Results('Experiments',Tweets_per_Party=50)
