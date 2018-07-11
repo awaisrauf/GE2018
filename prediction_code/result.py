@@ -8,21 +8,22 @@ from analysis import tweet_analysis
 from matplotlib import pyplot as plt
 from utils import Save_as_JSON, Data_Conversion_Party_2_Attributes
 import datetime
+from tzlocal import get_localzone # to get local date
 import json
 import numpy as np
-import os.path
 
 number_parties = 4
 number_attributes = 6
-now = datetime.datetime.now()
+local = get_localzone()
+now = datetime.datetime.now(local)
 
 def Election_Results(save_folder,Tweets_per_Party=5000 , Location = None):
     
     # Important Constituncies Names shoudl also be added
-    PTI  = ['PTI', 'Tehreek-e-Insaf', 'Vote4Bat','Imran Khan','IK','WazeereAzamImranKhan','Naya Pakistan','tabdeeli','kaptaan','Khyber Pakhtunkhwa', 'Peshawar']
+    PTI  = ['PTI', 'Tehreek-e-Insaf', 'Vote4Bat','Imran Khan','IK']
     PMLN = ['PMLN','PML-N',"Vote4Sher", 'Nawaz Sharif', 'MNS','Maryam Nawaz Sharif', 'Shehbaz Sharif','Ahsan Iqbal','N League', 'Punjab', 'Lahore']
-    PPP  = ['PPP','Pakistan People Party ','Vote4Teer', 'Bilawal Bhutto','Asif Ali Zardari','AAZ', 'Benazir Bhutto', 'Bhutto','Sindh', 'Larkana']
-    MQM  = ['MQM','Muttahida Qaumi Movement','MQM-P','Muttahida','APMSO','Vote4Kite', 'Altaf Hussain','Khalid Maqbool Siddiqui','Farooq Sattar','Karachi']
+    PPP  = ['PPP','Pakistan People Party ','Vote4Teer', 'BBhuttoZardari','Zardari', 'Benazir']
+    MQM  = ['MQM','Muttahida Qaumi Movement','APMSO','Vote4Kite']
     #MMA  = ['MMA', 'JUIF','JUI-F','JI','Jamat-e-Islami','Siraj ul Haq', 'Fuzal ur Rehman','Muttahida Majlis-e-Amal', 'FATA']
     #ANP  = ['ANP','Awami National Party','Awami National Party','Asfandyar Wali Khan ']
     
@@ -45,14 +46,15 @@ def Election_Results(save_folder,Tweets_per_Party=5000 , Location = None):
     
     Results = {}
     # if file already exists then load the data and sum both.
-    if(os.path.isfile(save_result_path)):
+    try:
         # Load Results from relative file
         with open(save_result_path) as json_data:
+            print("File Exists")
             Results_old = json.load(json_data)
         # Sum both of the results
         for attr in attrs:
             Results[attr] = (np.array(Results_old[attr]) + np.array(Results_new[attr])).tolist() 
-    else:
+    except:
         Results = Results_new
         
     Save_as_JSON(save_result_path, Results)
