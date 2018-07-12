@@ -6,13 +6,13 @@ that shows these results.
 
 ## Description
 This project have two components (As of now, may change);
-1- Python Code to find popularity of top 3 political parties
+- Python Code to find popularity of top 3 political parties
 of Pakistan based on twitter data.
 
 Folder prediction_code have all the python to calculate populairty. 
 More details are given in the folder's readme.md
 
-2- A jeyll, javascript and highcharts based website to show off these 
+- A jeyll, javascript and highcharts based website to show off these 
 results. 
 
 ## Done and ToDos
