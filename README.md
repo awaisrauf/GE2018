@@ -4,17 +4,23 @@ A python program to find popularity of top three political parties
 of Pakistan ahead of General Election 2018. A website is also included
 that shows these results. 
 
+[website](awaisrauf.github.io/GE2018)
+
 ## Description
 This project have two components (As of now, may change);
 - Python Code to find popularity of top 3 political parties
 of Pakistan based on twitter data.
 
-Folder prediction_code have all the python to calculate populairty. 
-More details are given in the folder's readme.md
+Folder prediction_code have all the python to calculate popularity. 
+More details are given in the folder's README.md
 
 - A jeyll, javascript and highcharts based website to show off these 
 results. 
-
+### Branches
+Project have two branches;
+- master: For website, a lot of commits for website to be updated.
+- code:   Tracks python prediction_code, very few, useful commits. All the changes in this branch are also added to 
+          master branch through cherry-pick.
 ## Done and ToDos
 ### Done
 - A simple template for website
