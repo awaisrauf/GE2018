@@ -1,4 +1,4 @@
-var url="https://raw.githubusercontent.com/awaisrauf/graphs/master/prediction_code/results/graph_results/pakistan.json";
+var url="https://raw.githubusercontent.com/awaisrauf/GE2018/master/prediction_code/results/graph_results/pakistan.json";
 
 var request = new XMLHttpRequest();
 request.open("GET", url, false);
