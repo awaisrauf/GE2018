@@ -33,6 +33,8 @@ Project have two branches;
  [candidates list](https://www.kaggle.com/nomanislam/candidate-list-for-2018-election-pakistan) etc.
 - Make predictions on constituency level results
 - Write a twitter bot to tweet results 
+- Follow these websites to show resutls 
+  - [BBC England Election Results](https://www.bbc.com/news/election/2017/results/england)
  
  ## How to  use
  I will add a requirements.txt to install all the packages soon. 
