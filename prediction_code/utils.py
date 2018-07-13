@@ -9,7 +9,7 @@ import numpy as np
 #from translation import google
 import tweepy 
 import json
-
+import subprocess
 import time
 
 
@@ -98,6 +98,16 @@ def Data_Conversion_Party_2_Attributes(data):
                'PosEmotion':PosEmotion.tolist(), 'NeuEmotion':NeuEmotion.tolist()}
 
     return Results
+"""
+Funciton to run bat file automatically
+"""
+def run_bat_file():
+    filepath="D:\Awais\GE2018\GE2018\prediction_code\automatic_git_push.bat"
+    p = subprocess.Popen(filepath, shell=True, stdout = subprocess.PIPE)
+    
+    stdout, stderr = p.communicate()
+    print (p.returncode) # is 0 if success	
+
 if __name__ == "__main__":
     start = time.clock()
     tweet_text = '-اگر تم حالات سے خوفزدہ نہیں ہوتو زندہ ہو ورنہ مردہ'
