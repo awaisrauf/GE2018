@@ -26,6 +26,7 @@ Project have two branches;
 - A simple template for website
 - A code template
 ### ToDos
+- Correct Baluchistan's page asap. 
 - Change Website Design, add more descriptions etc
   - Add legend on right side of chart
   - Change Website view
