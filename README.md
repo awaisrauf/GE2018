@@ -31,6 +31,7 @@ Project have two branches;
   - Add legend on right side of chart
   - Change Website view
 - Also include number of tweets analyzed and urdu tweets
+- Twitter analysis to see how different channels are covering different parties and use it for prediction. 
 - Leverage other datasets available such as [surveys](https://en.wikipedia.org/wiki/Opinion_polling_for_the_Pakistani_general_election,_2018)
  ,[previous election results in csv](https://www.kaggle.com/zusmani/predict-pakistan-elections-2018/home), 
  [candidates list](https://www.kaggle.com/nomanislam/candidate-list-for-2018-election-pakistan) etc.
