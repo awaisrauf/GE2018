@@ -27,6 +27,8 @@ Project have two branches;
 - A code template
 ### ToDos
 - Change Website Design, add more descriptions etc
+  - Add legend on right side of chart
+  - Change Website view
 - Also include number of tweets analyzed and urdu tweets
 - Leverage other datasets available such as [surveys](https://en.wikipedia.org/wiki/Opinion_polling_for_the_Pakistani_general_election,_2018)
  ,[previous election results in csv](https://www.kaggle.com/zusmani/predict-pakistan-elections-2018/home), 
