@@ -43,6 +43,8 @@ Project have two branches;
 	- Gallup Survey 2018 [Gallup by Geo](https://www.geo.tv/latest/201653-elections-exclusive-3-poll-results-in-who-will-you-vote-for-pakistan)
 	- Most recent poll by IPOR [Poll by IPOR](http://ipor.com.pk/wp-content/uploads/2018/07/National-Survey-of-Current-Political-Situation-in-Pakistan.pdf)
 	- Education Statistics [Link](http://library.aepam.edu.pk/Books/Pakistan%20Education%20Statistics%202015-16.pdf)
+- Related articles
+	- Zeeshan Ul Hassan Usmani's article [article](https://www.linkedin.com/pulse/pakistan-general-elections-2018-how-data-science-can-usmani-ph-d/?published=t)
 - Make predictions on constituency level results
 - Write a twitter bot to tweet results
 - Election Contest Competition [website](http://elections-prediction-competition.redbuffer.net/datasets/)
