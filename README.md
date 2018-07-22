@@ -4,7 +4,7 @@ A python program to find popularity of top three political parties
 of Pakistan ahead of General Election 2018. A website is also included
 that shows these results. 
 
-[website](https://www.awaisrauf.github.io/GE2018)
+[website](https://awaisrauf.github.io/GE2018/)
 
 ## Description
 This project have two components (As of now, may change);
