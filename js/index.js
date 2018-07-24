@@ -22,9 +22,6 @@ Highcharts.chart('container', {
     },
     title: {
         text: null
-		style: {
-        display: 'none'
-    }
     },
     xAxis: {
         title: {
