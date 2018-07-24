@@ -1,0 +1,289 @@
+2018 Seat Number,Seat Name,2013 Seat Number
+NA-1,Chitral,NA-32
+NA-2,Swat I,NA-29
+NA-3,Swat II,NA-3
+NA-4,Swat III,Newly Added
+NA-5,Upper Dir,NA-33
+NA-6,Lower Dir,NA-34
+NA-7,Lower Dir II,Newly Added
+NA-8,Malakand,NA-35
+NA-9,Boner,NA-28
+NA-10,Shangla,NA-31
+NA-11,Kohistan,NA-23
+NA-12,Battagram,NA-22
+NA-13,Mansehra I,NA-20
+NA-14,Mansehra II,NA-21
+NA-15,Abottabad I,NA-17
+NA-16,Abottabad II,NA-18
+NA-17,Haripur,NA-19
+NA-18,Swabi I,NA-12
+NA-19,Swabi II,NA-13
+NA-20,Mardan I,NA-9
+NA-21,Mardan II,NA-10
+NA-22,Mardan III,NA-11
+NA-23,Charsadda I,NA-7
+NA-24,Charsadda II,NA-8
+NA-25,Nowshera I,NA-5
+NA-26,Nowshera II,NA-6
+NA-27,Peshawar I,NA-1
+NA-28,Peshawar II,NA-2
+NA-29,Peshawar III,NA-3
+NA-30,Peshawar IV,NA-4
+NA-31,Peshawar V,Newly Added
+NA-32,Kohat,NA-14
+NA-33,Hangu,NA-16
+NA-34,Karak,NA-15
+NA-35,Bannu,NA-26
+NA-36,Lakki Marwat,NA-27
+NA-37,Tank,Newly Added
+NA-38,D I Khan,NA-24
+NA-39,D I Khan KUM Tank,NA-25
+NA-40,Tribal Area I - Bajaur I,NA-36
+NA-41,Tribal Area II - Bajaur II,NA-37
+NA-42,Tribal Area III - Mohman,NA-38
+NA-43,Tribal Area IV - Khyber I,NA-39
+NA-44,Tribal Area V - Khyber II,NA-40
+NA-45,Tribal Area VI - Kurram,NA-41
+NA-46,Tribal Area VII - Kurram II,NA-42
+NA-47,Tribal Area VIII - Orakzai,NA-43
+NA-48,Tribal Area IX - North Waziristan,NA-44
+NA-49,Tribal Area X - South Waziristan I,NA-45
+NA-50,Tribal Area XI - South Waziristan II,NA-46
+NA-51,Tribal Area XII - F R ,NA-47
+NA-52,Islamabad 1,NA-48
+NA-53,Islamabad 2,NA-49
+NA-54,Islamabad 3,Newly Added
+NA-55,Attock I,NA-57
+NA-56,Attock II,NA-58
+NA-57,Rawalpindi I,NA-50
+NA-58,Rawalpindi II,NA-51
+NA-59,Rawalpindi III,NA-52
+NA-60,Rawalpindi IV,NA-53
+NA-61,Rawalpindi V,NA-54
+NA-62,Rawalpindi VI,NA-55
+NA-63,Rawalpindi VII,NA-56
+NA-64,Chakwal I,NA-60
+NA-65,Chakwal II,NA-61
+NA-66,Jehlum I,NA-62
+NA-67,Jehlum II,NA-63
+NA-68,Gujarat 1,NA-104
+NA-69,Gujarat 2,NA-105
+NA-70,Gujarat 3,NA-106
+NA-71,Gujarat 4,NA-107
+NA-72,Sialkot 1,NA-110
+NA-73,Sialkot 2,NA-111
+NA-74,Sialkot 3,NA-112
+NA-75,Sialkot 4,NA-113
+NA-76,Sialkot 5,NA-114
+NA-77,Narowal 1,NA-115
+NA-78,Narowal 2,NA-116
+NA-79,Gujaranwala 1,NA-95
+NA-80,Gujaranwala 2,NA-96
+NA-81,Gujaranwala 3,NA-97
+NA-82,Gujaranwala 4,NA-98
+NA-83,Gujaranwala 5,NA-99
+NA-84,Gujaranwala 6,NA-100
+NA-85,MANDI BAHAUDDIN-I,NA-108
+NA-86,MANDI BAHAUDDIN-II,NA-109
+NA-87,Hafizabad 1,NA-102
+NA-88,Sargodha I,NA-64
+NA-89,Sargodha II,NA-65
+NA-90,Sargodha III,NA-66
+NA-91,Sargodha IV,NA-67
+NA-92,Sargodha V,NA-68
+NA-93,Khushab I,NA-69
+NA-94,Khushab II,NA-70
+NA-95,Mianwali I,NA-71
+NA-96,Mianwali II,NA-72
+NA-97,Bhakkar I,NA-73
+NA-98,Bhakkar II,NA-74
+NA-99,Chiniot-I (Old NA-86 Jhang-I),NA-86
+NA-100,Chiniot-II Cum-Jhang (Old NA-88 Jhang-III),NA-87
+NA-101,Faisalabad 1,NA-75
+NA-102,Faisalabad 2,NA-76
+NA-103,Faisalabad 3,NA-77
+NA-104,Faisalabad 4,NA-78
+NA-105,Faisalabad 5,NA-79
+NA-106,Faisalabad 6,NA-80
+NA-107,Faisalabad 7,NA-C18:C12681
+NA-108,Faisalabad 8,NA-82
+NA-109,Faisalabad 9,NA-83
+NA-110,Faisalabad 10,NA-84
+NA-111,Toba Tek Singh 1,NA-92
+NA-112,Toba Tek Singh 2,NA-93
+NA-113,Toba Tek Singh 3,NA-94
+NA-114,Jhang-I (Old NA-89 Jhang-IV),NA-89
+NA-115,Jhang-II (Old NA-90 Jhang-V,NA-90
+NA-116,Jhang-III(Old NA-91 Jhang-VI),NA-91
+NA-117,Nankana Sahib-I-Cum-Sheikhupura (Old Sheikhupura-V),NA-135
+NA-118,Nankana Sahib-II Cum-Sheikhupura (Old Sheikhupura-VI),NA-136
+NA-119,Sheikhupura 1,NA-131
+NA-120,Sheikhupura 2,NA-132
+NA-121,Sheikhupura 3,NA-133
+NA-122,Sheikhupura 4,NA-134
+NA-123,Lahore 1,NA-118
+NA-124,Lahore 2,NA-119
+NA-125,Lahore 3,NA-120
+NA-126,Lahore 4,NA-121
+NA-127,Lahore 5,NA-122
+NA-128,Lahore 6,NA-123
+NA-129,Lahore 7,NA-124
+NA-130,Lahore 8,NA-125
+NA-131,Lahore 9,NA-126
+NA-132,Lahore 10,NA-127
+NA-133,Lahore 11,NA-128
+NA-134,Lahore 12,NA-129
+NA-135,Lahore 13,NA-130
+NA-136,Lahore 14,Newly Added
+NA-137,Kasur 1,NA-138
+NA-138,Kasur 2,NA-139
+NA-139,Kasur 3,NA-140
+NA-140,Kasur 4,NA-141
+NA-141,Okara 1,NA-143
+NA-142,Okara 2,NA-144
+NA-143,Okara 3,NA-145
+NA-144,Okara 4,NA-146
+NA-145,Pakpattan 1,NA-164
+NA-146,Pakpattan 2,NA-165
+NA-147,Sahiwal 1,NA-160
+NA-148,Sahiwal 2,NA-161
+NA-149,Sahiwal 3,NA-162
+NA-150,Khanewal 1,NA-156
+NA-151,Khanewal 2,NA-157
+NA-152,Khanewal 3,NA-158
+NA-153,Khanewal 4,NA-159
+NA-154,Multan 1,NA-148
+NA-155,Multan 2,NA-149
+NA-156,Multan 3,NA-150
+NA-157,Multan 4,NA-151
+NA-158,Multan 5,NA-152
+NA-159,Multan 6,NA-153
+NA-160,Lodhran 1,NA-154
+NA-161,Lodhran 2,NA-155
+NA-162,Vehari 1,NA-167
+NA-163,Vehari 2,NA-168
+NA-164,Vehari 3,NA-169
+NA-165,Vehari 4,NA-170
+NA-166,Bahawalnagar 1,NA-188
+NA-167,Bahawalnagar 2,NA-189
+NA-168,Bahawalnagar 3,NA-190
+NA-169,Bahawalnagar 4,NA-191
+NA-170,Bahawalpur 1,NA-183
+NA-171,Bahawalpur 2,NA-184
+NA-172,Bahawalpur 3,NA-185
+NA-173,Bahawalpur 4,NA-186
+NA-174,Bahawalpur 5,NA-187
+NA-175,Rahim Yar Khan 1,NA-192
+NA-176,Rahim Yar Khan 2,NA-193
+NA-177,Rahim Yar Khan 3,NA-194
+NA-178,Rahim Yar Khan 4,NA-195
+NA-179,Rahim Yar Khan 5,NA-196
+NA-180,Rahim Yar Khan 6,NA-197
+NA-181,Muzaffargarh 1,NA-176
+NA-182,Muzaffargarh 2,NA-177
+NA-183,Muzaffargarh 3,NA-178
+NA-184,Muzaffargarh 4,NA-179
+NA-185,Muzaffargarh 5,NA-180
+NA-186,Muzaffargarh 6,Newly Added
+NA-187,Layyah 1,NA-181
+NA-188,Layyah 2,NA-182
+NA-189,Dera Ghazi Khan 1,NA-171
+NA-190,Dera Ghazi Khan 2,NA-172
+NA-191,Dera Ghazi Khan 3,NA-173
+NA-192,Dera Ghazi Khan,Newly Added
+NA-193,Rajanpur 1,NA-174
+NA-194,Rajanpur 2,NA-175
+NA-195,Rajanpur 3,NA-176
+NA-196,JACOBABAD (OLD JACOBABAD-I),NA-208
+NA-197,KASHMORE (OLD JACOBABAD-III),NA-210
+NA-198,SHIKARPUR (OLD SHIKARPUR-I),NA-202
+NA-199,SHEIKHUPUR-CUM-SUKKUR-CUM-LARKANA(OLD SHIKARPUR-II),NA-203
+NA-200,Larkana (Old Larkana),NA-204
+NA-201,LARKANA-CUM-KAMBER SHAHDADKOT (OLD LARKANA-II),NA-205
+NA-202,KAMBER SHAHDADKOT (OLD LARKANA-III),NA-206
+NA-203,LARKANA-CUM-SHIKHARPUR-CUM-KAMBER SHAHDADKOT (OLD LARKANA-IV,NA-207
+NA-204,GHOTKI-I,NA-200
+NA-205,GHOTKI-II,NA-201
+NA-206,SUKKUR-CUM-SHIKARPUR(I)(OLD SUKKUR-I),NA-198
+NA-207,SUKKUR-CUM-SHIKARPUR(II)(OLD SUKKUR-II),NA-199
+NA-208,Khairpur 1,NA-215
+NA-209,Khairpur 2,NA-216
+NA-210,Khairpur 3,NA-217
+NA-211,NAUSHEHRO FEROZ-I,NA-211
+NA-212,NAUSHEHRO FEROZ-II,NA-212
+NA-213,Nawabshah 1,NA-213
+NA-214,Nawabshah 2,NA-214
+NA-215,Sanghar 1,NA-234
+NA-216,SANGHAR-CUM-MIRPURKHAS-CUM-UMERKOT(OLD SANGHAR-II),NA-235
+NA-217,SANGHAR-II(OLD SNAGHAR-III),NA-236
+NA-218,MIRPUR KHAS-CUM-UMERKOT (I) (OLD MIRPURKHAS-I),NA-226
+NA-219,MIRPURKHAS-CUM-UMERKOT (II) (OLD MIRPURKHAS-II),NA-227
+NA-220,UMERKOT(OLD MIRPURKHAS-III),NA-228
+NA-221,Tharparkar 1,NA-229
+NA-222,Tharparkar 2,NA-230
+NA-223,MATIARI-CUM-HYDERABAD (OLD HYDERABAD-I),NA-218
+NA-224,HYDERABAD-I (OLD HYDERABAD-II),NA-219
+NA-225,HYDERABAD-II (OLD HYDERABAD-III),NA-220
+NA-226,HYDERABAD-CUM-MATIARI (OLDHYDERABAD-IV),NA-221
+NA-227,TANDO MUHAMMAD KHAN-CUM-HYDERABAD-CUM-BADIN (HYDERABAD-V),NA-222
+NA-228,TANDO ALLAHYAR-CUM-MATIARI(OLD HYDERABAD-VI),NA-223
+NA-229,BADIN-CUM-TANDO MUHAMMAD KHAN-I (OLD BADIN-I),NA-224
+NA-230,BADIN-CUM-TANDO MUHAMMAD KHAN-II(OLD BADIN-II),NA-225
+NA-231,Sujawal,Newly Added
+NA-232,Thatta 1,NA-237
+NA-233,JAMSHORO(OLD DADU-I),NA-231
+NA-234,DADU-II(OLD DADU-III),NA-233
+NA-235,DADU-I (OLD DADU-II),NA-232
+NA-236,Karachi 19 - Malir 1,NA-257
+NA-237,Karachi 20 - Malir 2,NA-258
+NA-238,Karachi 21 - Malir 3,Newly Added
+NA-239,Karachi 13 - South 4 and East - Korangi,NA-251
+NA-240,Karachi 18 - East 5 - Korangi,NA-256
+NA-241,Karachi - Korangi 3,Newly Added
+NA-242,Karachi 14 - East 1,NA-252
+NA-243,Karachi 15 - East 2,NA-253
+NA-244,Karachi 16 - East 3,NA-254
+NA-245,Karachi 17 - East 4 and Malir,NA-255
+NA-246,Karachi 10 - South 1,NA-248
+NA-247,Karachi 11 - South 2,NA-249
+NA-248,Karachi 1 - West 1,NA-239
+NA-249,Karachi 2 - West 2,NA-240
+NA-250,Karachi 3 - West 3,NA-241
+NA-251,Karachi 4 - West 4,NA-242
+NA-252,Karachi - West 5,Newly Added
+NA-253,Karachi 5 - Central 1,NA-243
+NA-254,Karachi 6 - Central 2,NA-244
+NA-255,Karachi 7 - Central 3,NA-245
+NA-256,Karachi 8 - Central 4,NA-246
+NA-257,Zhob-cum-Sherani-cum- Killa Saifullah,NA-264
+NA-258,Loralai-cum-Musakhel-cum-Barkhan,NA-263
+NA-259,Sibi-cum-Kohlu-cum-Dera Bugti- cum-Harani,NA-265
+NA-260,Nasirabad-cum- Jaffarabad,NA-266
+NA-261,Jaffarabad-cum-Sohbapur,Newly Added
+NA-262,Pishin-cum-Ziarat,NA-261
+NA-263,Killa Abdullah,NA-262
+NA-264,Quetta,NA-259
+NA-265,Quetta-cum-Chagai-cum-Nushki-cum-Mastung,NA-260
+NA-266,Quetta 3,Newly Added
+NA-267,Kalat-cum-Mastung,NA-268
+NA-268,Chaghai-Kum-Nushki-cum-Kharan,Newly Added
+NA-269,Khuzdar,NA-269
+NA-270,Kharan-cum-Washuk-cum-Panjgur,NA-271
+NA-271,Awaran-cum-Lasbela,NA-270
+NA-272,Kech-cum-Gwadar,NA-272
+Old Constituency Changed Considerably,Karachi 9 - Central 5,NA-247
+Old Constituency Changed Considerably,Karachi 12 - South 3,NA-250
+Old Constituency Changed Considerably,Attock III,NA-059
+Old Constituency Changed Considerably,Faisalabad 11,NA-085
+Old Constituency Changed Considerably,Jhang- Cum-Chiniot (Old NA-87 Jhang-II),NA-088
+Old Constituency Changed Considerably,Gujaranwala 7,NA-101
+Old Constituency Changed Considerably,Hafizabad 2,NA-103
+Old Constituency Changed Considerably,Narowal 3,NA-117
+Old Constituency Changed Considerably,Nankana Sahib-III (Old Sheikhupra-VII),NA-137
+Old Constituency Changed Considerably,Kasur 5,NA-142
+Old Constituency Changed Considerably,Okara 5,NA-147
+Old Constituency Changed Considerably,Sahiwal 4,NA-163
+Old Constituency Changed Considerably,Pakpattan 3,NA-166
+Old Constituency Changed Considerably,JACOBABAD-CUM-KASHMORE(OLD JACOBABAD-II),NA-209
+Old Constituency Changed Considerably,Thatta 2,NA-238
+Old Constituency Changed Considerably,Kachhi-cum-Jhal Magsi,NA-267
