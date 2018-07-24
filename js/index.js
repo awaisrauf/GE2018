@@ -41,7 +41,7 @@ Highcharts.chart('container', {
 	  exporting: { enabled: false },  
     yAxis: {
         title: {
-            text: 'Popularity in %'
+            text: 'Popularity'
         },
         labels: {
             formatter: function () {
