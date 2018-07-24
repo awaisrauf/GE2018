@@ -3,13 +3,15 @@ Highcharts.chart('overallProjection', {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: 0,
-        plotShadow: true
+        plotShadow: true,
+		marginTop: 5
+
     },
     tooltip: {
         pointFormat: ' <b>{point.y} Seats</b>'
     },
     title:{
-        text: '',
+        text: null,
     style: {
         display: 'none'
     }
