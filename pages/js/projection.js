@@ -3,7 +3,7 @@ Highcharts.chart('overallProjection', {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: 0,
-        plotShadow: false
+        plotShadow: true
     },
     tooltip: {
         pointFormat: ' <b>{point.y} Seats</b>'
