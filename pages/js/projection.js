@@ -3,7 +3,7 @@ Highcharts.chart('overallProjection', {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: 0,
-        plotShadow: true,
+        plotShadow: false,
 		marginTop: 5
 
     },
