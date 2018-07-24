@@ -41,7 +41,6 @@ Highcharts.chart('overallProjection', {
     exporting: { enabled: false },
     series: [{
         type: 'pie',
-        name: 'Nationl Assembly Seats Projection',
         innerSize: '50%',
         data: [
             ['PTI', 115],
