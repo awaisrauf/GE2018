@@ -21,7 +21,7 @@ Highcharts.chart('container', {
         type: 'spline'
     },
     title: {
-        text: 'Real Time Popularity Trends of Top 3 Political Parties of Pakisatn'
+        text: null
     },
     subtitle: {
         text: 'Source:  Twitter + Understanding'
