@@ -8,7 +8,7 @@ Highcharts.chart('overallProjection', {
     title: {
         text: 'Genearl Election 2018 Projection',
         align: 'center',
-        verticalAlign: 'above',
+        verticalAlign: 'below',
         y: 40
     },
     tooltip: {
