@@ -22,9 +22,9 @@ Highcharts.chart('container', {
     },
     title: {
         text: null
-    },
-    subtitle: {
-        text: 'Source:  Twitter + Understanding'
+		style: {
+        display: 'none'
+    }
     },
     xAxis: {
         title: {
