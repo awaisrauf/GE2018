@@ -9,7 +9,10 @@ Highcharts.chart('overallProjection', {
         pointFormat: ' <b>{point.y} Seats</b>'
     },
     title:{
-        text:null
+        text: '',
+    style: {
+        display: 'none'
+    }
     },
     
     plotOptions: {
