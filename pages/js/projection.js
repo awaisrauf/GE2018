@@ -5,12 +5,6 @@ Highcharts.chart('overallProjection', {
         plotBorderWidth: 0,
         plotShadow: false
     },
-    title: {
-        text: 'Genearl Election 2018 Projection',
-        align: 'center',
-        verticalAlign: 'below',
-        y: 40
-    },
     tooltip: {
         pointFormat: ' <b>{point.y} Seats</b>'
     },
