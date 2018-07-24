@@ -19,12 +19,10 @@ var PPP_line = Data["PPP Line"];
 Highcharts.chart('container', {
     chart: {
         type: 'spline'
+		marginTop: 5
     },
     title: {
-        text: 'Real Time Popularity Trends of Top 3 Political Parties of Sindh'
-    },
-    subtitle: {
-        text: 'Source:  Twitter + Understanding'
+        text: Null
     },
     xAxis: {
         title: {
