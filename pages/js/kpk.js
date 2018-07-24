@@ -20,11 +20,12 @@ Highcharts.chart('container', {
     chart: {
         type: 'spline'
     },
-    title: {
-        text: 'Real Time Popularity Trends of Top 3 Political Parties of KPK'
-    },
-    subtitle: {
-        text: 'Source:  Twitter + Understanding'
+    
+    title:{
+        text: null,
+    style: {
+        display: 'none'
+    }
     },
     xAxis: {
         title: {
