@@ -8,10 +8,10 @@ Highcharts.chart('overallProjection', {
     tooltip: {
         pointFormat: ' <b>{point.y} Seats</b>'
     },
-    
     title:{
         text:''
     },
+    
     plotOptions: {
         pie: {
         colors: [
@@ -43,6 +43,7 @@ Highcharts.chart('overallProjection', {
     exporting: { enabled: false },
     series: [{
         type: 'pie',
+        name: '',
         innerSize: '50%',
         data: [
             ['PTI', 115],
