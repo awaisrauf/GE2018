@@ -43,7 +43,7 @@ Highcharts.chart('overallProjection', {
     exporting: { enabled: false },
     series: [{
         type: 'pie',
-        name: '',
+        name: 'Projection',
         innerSize: '50%',
         data: [
             ['PTI', 115],
