@@ -51,12 +51,11 @@ Highcharts.chart('overallProjection', {
         name: 'Projection',
         innerSize: '50%',
         data: [
-            ['PTI', 115],
-            ['PMLN', 88],
-            ['PPPP', 34],
-            ['MMA', 6],
-            ['IND', 11],
-            ['Others',18],
+            ['PTI', 40],
+            ['PMLN', 3],
+            ['PPPP', 2],
+            ['MMA', 2],
+            
             
         ]
     }]

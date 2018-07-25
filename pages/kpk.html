@@ -4,34 +4,62 @@ title: KPK
 ---
 
 
+---
+layout: default
+title: Sindh Prediction
+---
+
+
+<style>
+overallProjection {
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+container{
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+div.a {
+    text-align: left;
+    margin-left: 20%;
+    margin-right:20%;
+}
+div.b{
+	text-align:center;
+	margin-left: 20%;
+    margin-right:20%;
+
+}
+
+</style>
 <body>
-
- <div id="container" style="width: 80vw; height: 75vh; margin: 0 auto"></div>
- <div id="container1"  style="width: 80vw; height: 60vh; margin: 0 auto"></div>
- 
- 
- 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<div class="b">
+<h3 class="b">Projection of National Assembly Seats from Sindh</h3>
+</div>
+<div class="a">
 
+<p>KPK is very important for political observers as it is center of Pakistan's rising new party PTI. PTI claims that it has revolutionzed 
+the province and it will get its government back despite past history of the province of not electing any party twice. Following graph
+shows projection of seats for KPK.   </p>
+</div>
+<div id="overallProjection" ></div>
+<script src="js/projection_sindh.js"></script>
 
+<div class="b">
+<h3 class="b">Popularity Trends in Sindh</h3>
+</div>
+<div class="a">
 
-<!-- Additional files for the Highslide popup effect -->
-<script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
-<script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+<p>PTI, party that led KPK is very active on twitter and enjoys huge fan base. Due to this fact, it is interesting to see changing 
+popularity levels of different parties in KPK. Following graph shows evolving trends of popularity for major parties. </p>
+</div>
+<div id="container" ></div>
 <script src="js/kpk.js"></script>
 
+
 </body>
-
-<script>
-
-
-</script>
