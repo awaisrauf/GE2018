@@ -18,7 +18,7 @@ var PPP_line = Data["PPP Line"];
 
 Highcharts.chart('container', {
     chart: {
-        type: 'spline'
+        type: 'spline',
 		marginTop: 5
     },
     title: {
