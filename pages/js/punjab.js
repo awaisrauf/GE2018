@@ -22,7 +22,7 @@ Highcharts.chart('container', {
 		marginTop: 5
     },
     title: {
-        text: Null
+        text: null
     },
     xAxis: {
         title: {
