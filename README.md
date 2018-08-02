@@ -6,7 +6,7 @@ Project to predict results of [general election 2018]() of Pakistan through diff
 -  [Website](https://awaisrauf.github.io/GE2018/) to see visulizations and detailed resutls.
 <div align="center" >
 <img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/cermony.jpg"  alt="Prize distribution ceremony" width="700" height="400" >
-<figcaption> Winner of Election Prediction Contest is receiving prize in National Incubation center. </figcaption>
+<figcaption> Winner of Election Prediction Contest is receiving prize in National Incubation Center (NIC). </figcaption>
 </div>
 
 ## Description
@@ -23,9 +23,11 @@ Project have two branches;
 
 ## Results
 <div align="center" >
-<img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/result.png"  alt="Difference between predicted and real results" width="700" height="400" >
+<img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/result.PNG"  alt="Difference between predicted and real results" width="600" height="350" >
 <figcaption> Difference between predicted and real results. </figcaption>
 </div>
+
+For detailed discussion on results, visit [link]()
 ## Done and ToDos
 ### Done
 - Premliminary website
