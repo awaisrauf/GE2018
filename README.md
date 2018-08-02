@@ -1,10 +1,9 @@
 # Prediction for General Election 2018 of Pakistan
 
-A python program to find popularity of top three political parties
-of Pakistan ahead of General Election 2018. A website is also included
-that shows these results. 
+Project to predict results of [general election 2018]() of Pakistan through different data sources.
 
-[website](https://awaisrauf.github.io/GE2018/)
+- Winner of national level [Election Prediction Contest]() held by ### [Ignite (Formerly National ICT R&D Fund)](https://ignite.org.pk/), [Redbuffer](redbuffer.net/) and [DeepLinks](). 
+-  [Website](https://awaisrauf.github.io/GE2018/) to see visulizations and detailed resutls.
 
 ## Description
 This project have two components (As of now, may change);
