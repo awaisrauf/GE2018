@@ -2,60 +2,54 @@
 
 Project to predict results of [general election 2018]() of Pakistan through different data sources.
 
-- Winner of national level [Election Prediction Contest]() held by ### [Ignite (Formerly National ICT R&D Fund)](https://ignite.org.pk/), [Redbuffer](redbuffer.net/) and [DeepLinks](). 
+- Winner of national level [Election Prediction Contest]() held by [Ignite (Formerly National ICT R&D Fund)](https://ignite.org.pk/), [Redbuffer](redbuffer.net/) and [DeepLinks](). 
 -  [Website](https://awaisrauf.github.io/GE2018/) to see visulizations and detailed resutls.
-
-</style>
-<img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/cermony.jpg"  alt="Prize distribution ceremony" width="500" height="333">
+<div align="center" >
+<img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/cermony.jpg"  alt="Prize distribution ceremony" width="700" height="400" >
+</div>
 
 ## Description
-This project have two components (As of now, may change);
-- Python Code to find popularity of top 3 political parties
-of Pakistan based on twitter data.
-
-Folder prediction_code have all the python to calculate popularity. 
-More details are given in the folder's README.md
-
-- A jeyll, javascript and highcharts based website to show off these 
+This project have three components;
+- Pyhton code to predict winners of 272 natioanl assembly seat of Pakistan. For code visit [link]()
+- Python code to find real time popularity trends of top 3 political parties
+of Pakistan from twitter. For code visit [link]().
+- A jeyll, javascript and highcharts based website to show 
 results. 
 ### Branches
 Project have two branches;
-- master: For website, a lot of commits for website to be updated.
-- code:   Tracks python prediction_code, very few, useful commits. All the changes in this branch are also added to 
-          master branch through cherry-pick.
+- master: To update.
+- code:   Tracks python code for prediction. All the changes in this branch are also added to master branch through git cherry-pick.
 ## Done and ToDos
 ### Done
-- A simple template for website
-- A code template
-### ToDos
-- Correct Baluchistan's page asap. 
-- Change Website Design, add more descriptions etc
-  - Add legend on right side of chart
-  - Change Website view
-- Also include number of tweets analyzed and urdu tweets
-- Twitter analysis to see how different channels are covering different parties and use it for prediction. 
-- Leverage other datasets available such as 
+- Premliminary website
+- Twitter based popularity trends
+- Constituency level predictions
+### Extra things that can be done in future
+- Analysis of media houses for their coverage of different political parties
+- Leverage other data sources available;
+	-  District level education score by Alif Ailan [link](https://d3n8a8pro7vhmx.cloudfront.net/alifailaan/pages/537/attachments/original/1474368820/Pakistan_District_Education_Rankings_2016_Full_Report.pdf?1474368820)
+	- Education Statistics [Link](http://library.aepam.edu.pk/Books/Pakistan%20Education%20Statistics%202015-16.pdf)
+	- Twitter bot to automatically tweet about election 
+### References
+- Data sources that were used in this project	
 	- [surveys](https://en.wikipedia.org/wiki/Opinion_polling_for_the_Pakistani_general_election,_2018)
     - [previous election results in csv](https://www.kaggle.com/zusmani/predict-pakistan-elections-2018/home),
     - [candidates list](https://www.kaggle.com/nomanislam/candidate-list-for-2018-election-pakistan) 
     - [2002, 2008 and 2013 Election Results](https://www.kaggle.com/mustufain/pakistan-general-elections)
-	- Habib Akram's Survey would be a another thing [link](https://dunyanews.tv/en/Pakistan/449132-Dunya-Election-Cell-Survey-2018-results)
-	- Another source of Dunya survey cell [Dunya survey](https://dunyanews.tv/en/Pakistan/449132-Dunya-Election-Cell-Survey-2018-results)
-	- Eductation level district wise [District Wise literacy Rates](https://d3n8a8pro7vhmx.cloudfront.net/alifailaan/pages/537/attachments/original/1474368820/Pakistan_District_Education_Rankings_2016_Full_Report.pdf?1474368820)
+
+	-  Dunya survey cell [Dunya survey](https://dunyanews.tv/en/Pakistan/449132-Dunya-Election-Cell-Survey-2018-results)
+	
 	- Startegy to predict election [Pakistan Election watch](https://www.pakistanelectionwatch.com/single-post/predicting-who-will-win-2018-elections)
-	- Gallup Survey 2018 [Gallup by Geo](https://www.geo.tv/latest/201653-elections-exclusive-3-poll-results-in-who-will-you-vote-for-pakistan)
-	- Most recent poll by IPOR [Poll by IPOR](http://ipor.com.pk/wp-content/uploads/2018/07/National-Survey-of-Current-Political-Situation-in-Pakistan.pdf)
-	- Education Statistics [Link](http://library.aepam.edu.pk/Books/Pakistan%20Education%20Statistics%202015-16.pdf)
+	- Gallup Survey through Geo [link](https://www.geo.tv/latest/201653-elections-exclusive-3-poll-results-in-who-will-you-vote-for-pakistan)
+	- Poll by IPOR [link](http://ipor.com.pk/wp-content/uploads/2018/07/National-Survey-of-Current-Political-Situation-in-Pakistan.pdf)
+	
 - Related articles
 	- Zeeshan Ul Hassan Usmani's article [article](https://www.linkedin.com/pulse/pakistan-general-elections-2018-how-data-science-can-usmani-ph-d/?published=t)
-- Make predictions on constituency level results
-- Write a twitter bot to tweet results
 - Election Contest Competition [website](http://elections-prediction-competition.redbuffer.net/datasets/)
 - Follow these websites to show resutls 
   - [BBC England Election Results](https://www.bbc.com/news/election/2017/results/england)
   - A [kml](https://drive.google.com/file/d/0B0yd9NmqxjWQTjFZVnAtWl8zUHc/view) file with constituency level map
  
- ## How to  use
- I will add a requirements.txt to install all the packages soon. 
+
  
  
