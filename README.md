@@ -4,15 +4,9 @@ Project to predict results of [general election 2018]() of Pakistan through diff
 
 - Winner of national level [Election Prediction Contest]() held by ### [Ignite (Formerly National ICT R&D Fund)](https://ignite.org.pk/), [Redbuffer](redbuffer.net/) and [DeepLinks](). 
 -  [Website](https://awaisrauf.github.io/GE2018/) to see visulizations and detailed resutls.
-<style>
-.center {  
-display:  block;  
-margin-left:  auto;  
-margin-right:  auto;  
-width:  50%;  
-}
+
 </style>
-<img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/cermony.jpg"  alt="Paris"  class="center">
+<img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/cermony.jpg"  alt="Prize distribution ceremony" width="500" height="333">
 
 ## Description
 This project have two components (As of now, may change);
