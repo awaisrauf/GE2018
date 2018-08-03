@@ -17,7 +17,7 @@ from different data sources. For example, if a constituency have 4 candidates th
 
 For each constituency, such vectors are produced from 11 different data sources. To combine all of these vector for final solution, election results for 10 secure constituencies are assumed and then Bayesian Optimization is used to combine these probabilities. 
 <div align="center" >
-<img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/solution.png"  alt="Block Diagram" width="700" height="400" >
+<img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/solution.png"  alt="Block Diagram" width="800" height="250" >
 <figcaption> Block Diagram of the solution </figcaption>
 </div>
 
