@@ -8,124 +8,13 @@ import pandas as pd
 import json
 import os
 import numpy as np
-from preprocessing import Vote_distribution_preprocessed
+from preprocessing import Vote_distribution_preprocessed,Result_2018,NA_list_preprocessed
 
-def Result_2018():
-    df_result_2018 = pd.read_csv("E:\Semester3\GE2018\GE2018\election_prediction\data\Election_2018_Stats\Election_result_2018.csv")
-    # fill na values with values above
-    df_result_2018 = df_result_2018.fillna(method="ffill")
-    
-    replacements = {
-          # standredize Independent name in data      
-          'Independent': 'IND',
-          'Independent Candidate': 'IND',
-          ' Independent': 'IND',
-          'Indepdendent': 'IND',
-          # standredize PTI name in data
-          'Pakistan Tehreek-e-lnsaf':'PTI',
-          'Pakistan Tehreek e Insaf': 'PTI',
-          'Pakistan Tehreek E Insaf': 'PTI',
-          'Pakistan Tehreek e Insaaf': 'PTI',
-          'Pakistan tehreek-e-Insaf': 'PTI',
-          'Pakistan Tehreek e insaf': 'PTI',
-          'PakistanTehreek-e-Insaf':  'PTI',
-          'Pakisyan Tehreek e Insaaf': 'PTI',
-          'Pakistan Tehreek-e-lnsaf': 'PTI',
-          'Pakistan tehreek e Insaf': 'PTI',
-          'Pakistan Tehreek-e-Insaf': 'PTI', 
-          'Pakistan Tahreek-e-Insafa': 'PTI',
-          'Tehrik e Insaf': 'PTI',
-          # standredize PML-N name in data
-          'Pakistan Muslim League (N)': 'PML-N',
-          'Pakistan Muslim League(N)': 'PML-N', 
-          'Pakistan Muslim League\n(N)': 'PML-N',                    
-          'PMLN': 'PML-N',
-          'PMLN': 'PML-N',
-          'PML (N)': 'PML-N',
-          'PML -N': 'PML-N',   
-          'Pakistan Muslim League(N)' : 'PML-N', 
-          # standredize PPPP name in data                       
-          'Pakistan Peoples Party Parliamentarians': 'PPPP',
-          'Pakistan Peoples party parlimentarians':'PPPP',
-          'Pakistan Peoples party parlimentarians': 'PPPP',
-          'Pakistan Peoples Party Parlimentarians': 'PPPP',
-          'Pakistan Peoples Party\nParliamentarians': 'PPPP',
-          'Pakistan Peoples Party': 'PPPP',
-          'Pakistan Peoples Part Parliamentarians': 'PPPP',
-          'Pakistan peopkes party parlimentarians': 'PPPP',
-          'Pakistan People Party Parlianmentray': 'PPPP',
-          # 
-          'MUTAHIDA MAJLIS AMAL PAKISTAN': 'MMA',
-          'Mutahida Majlas-e-Amal Pakistan':'MMA',
-          'MUTAHIDA MAJLIS AMAL PAKISTAN ': 'MMA',
-          'Mutthida Majlis-E-Amal Pakistan': 'MMA',
-          'Mutthida Majlis-e-Amal Pakistan': 'MMA',
-          'Mutahida Majlas-e-Amal Pakistan': 'MMA',
-          'MUTTHIDA MAJLIS-E-AMAL PAKISTAN': 'MMA',
-          'MUTTAHIDA MAJLIS-E- AMAL PAKISTAN': 'MMA',
-          'Muthida Majlis e Amal Pakistan': 'MMA',
-          'Mutihida Majlis e Amal Pakistan': 'MMA',
-          'M.M.A' : 'MMA',
-          'Muttahida Majlis-e-Amal Pakistan':'MMA',
-          #
-          'Mutahida Qaumi Movemebt Pakistan': 'MQM',
-          'Muttahida Qaumi Movement Pakistan': 'MQM',
-          # 
-          'Tehreek Labbaik Pakistan': 'TLP',
-          'Tehreek labbaik Pakistan': 'TLP',
-          'Tehrik e Labbaik': 'TLP',
-          'Tahreek Labbaik pakistan': 'TLP',
-          'Tehreek e Labbaik Pakistan': 'TLP',
-          'Tehrek e labbaik Pakistan' : 'TLP',
-          'Tehrik e Labbaik Pakistan': 'TLP',
-          'Tehrik e Labbaik': 'TLP',
-          'Tehrik e Labbaik': 'TLP',
-          'Tehreek e labbaik Pakistan':'TLP',
-          'Tehreek-e-Labbaik Pakistan': 'TLP',
-          'Tehreek e Labbaik Pakistan TLI ': 'TLP',
-          #
-          'Awami National Party': 'ANP',
-          'Avvami National Party': 'ANP',
-          #
-          'Pak Sarzameen Party': 'PSP',
-          'Pak SarZamen Party': 'PSP',
-          #
-          'Pakistan Muslim League': 'PML-Q',
-          'PML -Q':'PML-Q',
-          #
-          'Balochistan National Party': 'BNP',
-          'Balochistan National Party': 'BNP',
-          #
-          'Balochistan Awami Party': 'BAP',
-          'Balochistan Awami Party': 'BAP',
-          #
-          'Pashtoonkhwa Milli Awami Party': 'PKMAP',
-          'PashtoonKhwa Milli Awami party': 'PKMAP',
-          'Pakhtoonkhwa Milli Awami Party ': 'PKMAP',
-          'Pashtoonkhawa Milli Awami Party': 'PKMAP',
-          'Pashtunkhwa Milli Awami Party ': 'PKMAP',
-          # 
-          'All Pakistan Muslim League': 'APML',
-          #
-          'Grand Democratic Allience': 'GDA',
-          'G.D.A': 'GDA',
-          #
-          'Sindh United Party': 'SUP',
-          #
-          'Qaumi Watan Party': 'QWP',
-          "Pakistan Muslim League (Z)":"PML-Z"
-          
-        }
-    df_result_2018['results__party'].replace(replacements, inplace=True)
-    
-    return df_result_2018
+df_NA_list_2018 = NA_list_preprocessed()
 
 
 def real_results():
     df_NA_list = Result_2018()
-
- 
-    
     # Results Data Frame
     list_results = []
     for constituency in constituencies:  
@@ -154,9 +43,12 @@ all_parties = df_NA_list["Party"].value_counts().index.tolist()
 party_to_number = {}
 i = 0
 for party in all_parties:
-    party_to_number[party] = i                   
-    i +=1               
-print(party_to_number)    
+    if(i<6):
+        party_to_number[party] = i                   
+        i +=1
+    else:
+        party_to_number[party] = 6
+               
 
 
 constituencies = df_NA_list["Constituency"].unique()
@@ -165,21 +57,26 @@ cordinates = pd.read_csv("data\\Election_2018_Stats\\NA_2018_centroids.csv")
 real_result = pd.read_csv("results\\real_result.csv")
 pred_result = pd.read_csv("results\\predicted_result.csv")
 constituencies = real_result["Constituency"]
+
+
+
 dic = {}
 for constituency in constituencies:   
     constituency_cordinate_X = cordinates[cordinates["seat"] == constituency]["X"].tolist()[0]
     constituency_cordinate_Y = cordinates[cordinates["seat"] == constituency]["Y"].tolist()[0]
     original_party = real_result[real_result["Constituency"]==constituency]["Party"].tolist()[0]
+    constituency_name = df_NA_list_2018[df_NA_list_2018["Constituency Number (ID)"]==constituency]["Constituency Name"].tolist()
+
     predicted_party = pred_result["Party"].tolist()[0]
-    array = [constituency_cordinate_X,constituency_cordinate_Y,original_party,party_to_number[original_party]]
+    array = [constituency_cordinate_X,constituency_cordinate_Y,original_party,party_to_number[original_party],constituency, constituency_name]
     dic[constituency] = array
        
 
 original_party = "Election Delyaed"      
-dic["NA-60"]= [0,0,original_party,0]
+dic["NA-60"]= [0,0,original_party,0,"NA-60","Rawalpinid"]
 
 original_party = "Election Delyaed"      
-dic["NA-103"]= [0,0,original_party,0]
+dic["NA-103"]= [0,0,original_party,0,"NA-103","Faisalabad"]
 
 
 
