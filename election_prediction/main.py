@@ -80,21 +80,21 @@ def final_model(para0,para1,para2,para3,para4,para5,para6,para7,para8,para9,para
     
     
 if __name__ == "__main__":    
-   para0,para1,para2,para3,para4,para5,para6,para7,para8,para9,para10,para11,para12 = parameter_serach(iters=15)
+   #para0,para1,para2,para3,para4,para5,para6,para7,para8,para9,para10,para11,para12 = parameter_serach(iters=15)
     # hyper parameter values: Taken form bayesian optimization.
-#   para0 = 0.5
-#   para1 = 0.01
-#   para10 = 0.5
-#   para11 = 0.01
-#   para12 = 0.01
-#   para2 = 0.1
-#   para3 = 0.01
-#   para4 = 0.05
-#   para5 = 1.0
-#   para6 = 0.01
-#   para7 = 0.01
-#   para8 = 0.01
-#   para9 = 0.1
+   para0 = 0.5
+   para1 = 0.01
+   para10 = 0.5
+   para11 = 0.01
+   para12 = 0.01
+   para2 = 0.1
+   para3 = 0.01
+   para4 = 0.05
+   para5 = 1.0
+   para6 = 0.01
+   para7 = 0.01
+   para8 = 0.01
+   para9 = 0.1
    final_model(para0,para1,para2,para3,para4,para5,para6,para7,para8,para9,para10,para11,para12)    
 
     
