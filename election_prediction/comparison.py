@@ -177,7 +177,7 @@ for constituency in constituencies:
        
 
 original_party = "Election Delyaed"      
-dic["NA-63"]= [0,0,original_party,0]
+dic["NA-60"]= [0,0,original_party,0]
 
 original_party = "Election Delyaed"      
 dic["NA-103"]= [0,0,original_party,0]
