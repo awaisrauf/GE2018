@@ -60,7 +60,8 @@ constituencies = real_result["Constituency"]
 
 
 
-dic = {}
+dic_predicted = {}
+dic_real = {}
 for constituency in constituencies:   
     constituency_cordinate_X = cordinates[cordinates["seat"] == constituency]["X"].tolist()[0]
     constituency_cordinate_Y = cordinates[cordinates["seat"] == constituency]["Y"].tolist()[0]
@@ -69,21 +70,28 @@ for constituency in constituencies:
     try:
         constituency_name = constituency_name[0]
     except:
-        constituency_name = "Unknown"
-    print(constituency,constituency_name)
+        constituency_name = "Unknown" 
     predicted_party = pred_result["Party"].tolist()[0]
-    array = [constituency_cordinate_X,constituency_cordinate_Y,original_party,party_to_number[original_party],constituency, constituency_name]
-    dic[constituency] = array
-       
+    array_real = [constituency_cordinate_X,constituency_cordinate_Y,original_party,party_to_number[original_party],constituency, constituency_name]
+    array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_party,party_to_number[original_party],constituency, constituency_name]
+
+    dic_real[constituency] = array_real
+    dic_predicted[constituency] = array_pred
+    
 
 original_party = "Election Delyaed"      
-dic["NA-60"]= [0,0,original_party,0,"NA-60","Rawalpinid"]
+dic_real["NA-60"]= [0,0,original_party,0,"NA-60","Rawalpinid"]
+dic_predicted["NA-60"]= [0,0,original_party,0,"NA-60","Rawalpinid"]
 
 original_party = "Election Delyaed"      
-dic["NA-103"]= [0,0,original_party,0,"NA-103","Faisalabad"]
+dic_real["NA-103"]= [0,0,original_party,0,"NA-103","Faisalabad"]
+dic_predicted["NA-60"]= [0,0,original_party,0,"NA-60","Rawalpinid"]
 
 
 
 
-with open( os.path.join("results","result.json"), "w") as write_file:
-            json.dump(dic, write_file)
+with open( os.path.join("results","result_real.json"), "w") as write_file:
+            json.dump(dic_real, write_file)
+
+with open( os.path.join("results","result_predicted.json"), "w") as write_file:
+            json.dump(dic_predicted, write_file)            
