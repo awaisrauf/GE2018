@@ -73,7 +73,7 @@ for constituency in constituencies:
         constituency_name = "Unknown" 
     predicted_party = pred_result["Party"].tolist()[0]
     array_real = [constituency_cordinate_X,constituency_cordinate_Y,original_party,party_to_number[original_party],constituency, constituency_name]
-    array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_party,party_to_number[original_party],constituency, constituency_name]
+    array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_party,party_to_number[predicted_party],constituency, constituency_name]
 
     dic_real[constituency] = array_real
     dic_predicted[constituency] = array_pred
