@@ -66,7 +66,11 @@ for constituency in constituencies:
     constituency_cordinate_Y = cordinates[cordinates["seat"] == constituency]["Y"].tolist()[0]
     original_party = real_result[real_result["Constituency"]==constituency]["Party"].tolist()[0]
     constituency_name = df_NA_list_2018[df_NA_list_2018["Constituency Number (ID)"]==constituency]["Constituency Name"].tolist()
-
+    try:
+        constituency_name = constituency_name[0]
+    except:
+        constituency_name = "Unknown"
+    print(constituency,constituency_name)
     predicted_party = pred_result["Party"].tolist()[0]
     array = [constituency_cordinate_X,constituency_cordinate_Y,original_party,party_to_number[original_party],constituency, constituency_name]
     dic[constituency] = array
