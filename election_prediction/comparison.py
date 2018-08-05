@@ -85,7 +85,7 @@ dic_predicted["NA-60"]= [0,0,original_party,0,"NA-60","Rawalpinid"]
 
 original_party = "Election Delyaed"      
 dic_real["NA-103"]= [0,0,original_party,0,"NA-103","Faisalabad"]
-dic_predicted["NA-60"]= [0,0,original_party,0,"NA-103","Rawalpinid"]
+dic_predicted["NA-103"]= [0,0,original_party,0,"NA-103","Faisalabad"]
 
 
 
