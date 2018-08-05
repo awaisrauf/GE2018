@@ -122,9 +122,8 @@ def Result_2018():
 
 
 def real_results():
-    df_NA_list = result_2018()
-    constituencies = df_NA_list["seat"].unique()
-    constituencies = np.asarray(constituencies)
+    df_NA_list = Result_2018()
+
  
     
     # Results Data Frame
@@ -150,18 +149,30 @@ def real_results():
     df_results.to_csv("results/real_result.csv",index=False) 
 
 
+df_NA_list = Result_2018()
+all_parties = df_NA_list["results__party"].unique().tolist()
+party_to_number = {}
+i = 0
+for party in all_parties:
+    print(party,i)
+    party_to_number[party] = i                   
+    i +=1               
+print(party_to_number)    
+
+
+constituencies = df_NA_list["seat"].unique()
+constituencies = np.asarray(constituencies)
 cordinates = pd.read_csv("data\\Election_2018_Stats\\NA_2018_centroids.csv")
 real_result = pd.read_csv("results\\real_result.csv")
 pred_result = pd.read_csv("results\\predicted_result.csv")
-
 constituencies = real_result["Constituency"]
 dic = {}
 for constituency in constituencies:   
     constituency_cordinate_X = cordinates[cordinates["seat"] == constituency]["X"].tolist()[0]
     constituency_cordinate_Y = cordinates[cordinates["seat"] == constituency]["Y"].tolist()[0]
-    original_party = real_result["Party"].tolist()[0]
+    original_party = real_result[real_result["Constituency"]==constituency]["Party"].tolist()[0]
     predicted_party = pred_result["Party"].tolist()[0]
-    array = [constituency_cordinate_X,constituency_cordinate_Y,original_party,predicted_party]
+    array = [constituency_cordinate_X,constituency_cordinate_Y,original_party,party_to_number[original_party]]
     dic[constituency] = array
 
 
