@@ -158,7 +158,7 @@ constituencies = real_result["Constituency"]
 dic = {}
 for constituency in constituencies:   
     constituency_cordinate_X = cordinates[cordinates["seat"] == constituency]["X"].tolist()[0]
-    constituency_cordinate_Y = cordinates[cordinates["seat"] == constituency]["X"].tolist()[0]
+    constituency_cordinate_Y = cordinates[cordinates["seat"] == constituency]["Y"].tolist()[0]
     original_party = real_result["Party"].tolist()[0]
     predicted_party = pred_result["Party"].tolist()[0]
     array = [constituency_cordinate_X,constituency_cordinate_Y,original_party,predicted_party]
