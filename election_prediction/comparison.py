@@ -174,6 +174,13 @@ for constituency in constituencies:
     predicted_party = pred_result["Party"].tolist()[0]
     array = [constituency_cordinate_X,constituency_cordinate_Y,original_party,party_to_number[original_party]]
     dic[constituency] = array
+       
+
+original_party = "Election Delyaed"      
+dic["NA-63"]= [0,0,original_party,0]
+
+original_party = "Election Delyaed"      
+dic["NA-103"]= [0,0,original_party,0]
 
 
 
