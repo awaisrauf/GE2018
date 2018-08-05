@@ -18,6 +18,7 @@ def real_results():
     # Results Data Frame
     list_results = []
     for constituency in constituencies:  
+        print([constituency])
         # slice data for one constituency
         is_relevant_constituency = df_NA_list["seat"] == constituency
         current_constituency_data = df_NA_list[is_relevant_constituency]
@@ -55,14 +56,16 @@ constituencies = df_NA_list["Constituency"].unique()
 constituencies = np.asarray(constituencies)
 cordinates = pd.read_csv("data\\Election_2018_Stats\\NA_2018_centroids.csv")
 real_result = pd.read_csv("results\\real_result.csv")
-pred_result = pd.read_csv("results\\predicted_result.csv")
-constituencies = real_result["Constituency"]
+pred_result = pd.read_csv("results\\result_party.csv")
+constituencies_real = real_result["Constituency"]
+constituencies_pred = pred_result["Constituency"]
+
 
 
 
 dic_predicted = {}
 dic_real = {}
-for constituency in constituencies:   
+for constituency in constituencies_real:   
     constituency_cordinate_X = cordinates[cordinates["seat"] == constituency]["X"].tolist()[0]
     constituency_cordinate_Y = cordinates[cordinates["seat"] == constituency]["Y"].tolist()[0]
     original_party = real_result[real_result["Constituency"]==constituency]["Party"].tolist()[0]
@@ -71,9 +74,17 @@ for constituency in constituencies:
         constituency_name = constituency_name[0]
     except:
         constituency_name = "Unknown" 
-    predicted_party = pred_result["Party"].tolist()[0]
+    # to avoid having [] inspite of partyy    
+    if(pred_result[pred_result["Constituency"]==constituency]["Party"].tolist()):
+        predicted_party = pred_result[pred_result["Constituency"]==constituency]["Party"].tolist()[0]
+    else:
+        predicted_party = "PML-N"
+    print(constituency,predicted_party)
     array_real = [constituency_cordinate_X,constituency_cordinate_Y,original_party,party_to_number[original_party],constituency, constituency_name]
-    array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_party,party_to_number[predicted_party],constituency, constituency_name]
+    if(predicted_party in all_parties):
+        array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_party,party_to_number[predicted_party],constituency, constituency_name]
+    else:
+        array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_party,6,constituency, constituency_name]
 
     dic_real[constituency] = array_real
     dic_predicted[constituency] = array_pred

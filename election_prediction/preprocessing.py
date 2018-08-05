@@ -163,7 +163,14 @@ def NA_list_preprocessed():
             }
     df_NA_list['District'].replace(replacement_districts, inplace=True)
     
-    
+    # Remove space in constituencies names i.e. if cons_name = "NA-1 ", make it "NA-1"
+    number_of_constituencies = len(df_NA_list["Constituency Number (ID)"].tolist())
+    list_corrected_names = []
+    for i in range(number_of_constituencies):
+        corrected_name =  df_NA_list["Constituency Number (ID)"].iloc[i].strip()
+        list_corrected_names.append(corrected_name)
+    # replace all the values    
+    df_NA_list.loc[0:number_of_constituencies,"Constituency Number (ID)"] = list_corrected_names
     return df_NA_list
 
 #==============================================================================

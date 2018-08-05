@@ -19,8 +19,9 @@ from utils import results_to_party
 # candidate's win
 #==============================================================================
 def final_model(para0,para1,para2,para3,para4,para5,para6,para7,para8,para9,para10,para11,para12):
+    print("....")
     df_NA_list = NA_list_preprocessed()
-    constituencies = df_NA_list["Constituency Number (ID)"].unique()
+    constituencies = df_NA_list["Constituency Number (ID)"].unique().tolist()
     constituencies = np.asarray(constituencies)
  
     serial_number = ["924","1054","2171","1509","1359","1540","2029","1293","356","1729","2362","1619","1826","2362"]
@@ -79,7 +80,21 @@ def final_model(para0,para1,para2,para3,para4,para5,para6,para7,para8,para9,para
     
     
 if __name__ == "__main__":    
-   para0,para1,para2,para3,para4,para5,para6,para7,para8,para9,para10,para11,para12 = parameter_serach(iters=10)
+   para0,para1,para2,para3,para4,para5,para6,para7,para8,para9,para10,para11,para12 = parameter_serach(iters=15)
+    # hyper parameter values: Taken form bayesian optimization.
+#   para0 = 0.5
+#   para1 = 0.01
+#   para10 = 0.5
+#   para11 = 0.01
+#   para12 = 0.01
+#   para2 = 0.1
+#   para3 = 0.01
+#   para4 = 0.05
+#   para5 = 1.0
+#   para6 = 0.01
+#   para7 = 0.01
+#   para8 = 0.01
+#   para9 = 0.1
    final_model(para0,para1,para2,para3,para4,para5,para6,para7,para8,para9,para10,para11,para12)    
 
     
