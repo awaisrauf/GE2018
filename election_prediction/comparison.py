@@ -43,21 +43,22 @@ def real_results():
 df_NA_list = pd.read_csv("results/real_result.csv") 
 all_parties = df_NA_list["Party"].value_counts().index.tolist()
 party_to_number = {}
-i = 50
+i = 20
+other = 27
 for party in all_parties:
-    if(i<56):
+    if(i<26):
         party_to_number[party] = i                   
         i +=1
     else:
-        party_to_number[party] = 57
-party_to_number["PKMAP"] = 57
-party_to_number["Ch.Nissar"] = 57 
-party_to_number["TLP"] = 57
-party_to_number["GDA"] = 57 
-party_to_number["Barabri Party Pakistan"] = 57 
-party_to_number["PSP"] = 57 
-party_to_number["Amun Taraqqi Party"] = 57 
-party_to_number["Pakistan Rah-e-Haq Pak"] = 57 
+        party_to_number[party] = other
+party_to_number["PKMAP"] = other
+party_to_number["Ch.Nissar"] = other
+party_to_number["TLP"] = other
+party_to_number["GDA"] = other
+party_to_number["Barabri Party Pakistan"] = other 
+party_to_number["PSP"] = other 
+party_to_number["Amun Taraqqi Party"] = other 
+party_to_number["Pakistan Rah-e-Haq Pak"] = other 
 
                
 
@@ -79,12 +80,15 @@ for constituency in constituencies_real:
     constituency_cordinate_X = cordinates[cordinates["seat"] == constituency]["X"].tolist()[0]
     constituency_cordinate_Y = cordinates[cordinates["seat"] == constituency]["Y"].tolist()[0]
     original_party = real_result[real_result["Constituency"]==constituency]["Party"].tolist()[0]
-    orignial_label = original_party+":"+":"+constituency+":"+constituency_name
     constituency_name = df_NA_list_2018[df_NA_list_2018["Constituency Number (ID)"]==constituency]["Constituency Name"].tolist()
+    try:
+        orignial_label = original_party+":"+":"+constituency+":"+constituency_name[0]
+    except:
+        orignial_label = original_party+":"+":"+constituency
     try:
         constituency_name = constituency_name[0]
     except:
-        constituency_name = "Unknown" 
+        constituency_name = "" 
     # to avoid having [] inspite of partyy    
     if(pred_result[pred_result["Constituency"]==constituency]["Party"].tolist()):
         predicted_party = pred_result[pred_result["Constituency"]==constituency]["Party"].tolist()[0]
@@ -97,7 +101,7 @@ for constituency in constituencies_real:
     if(predicted_party in all_parties):
         array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_label,party_to_number[predicted_party]]
     else:
-        array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_label,6,constituency, constituency_name]
+        array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_label,other]
 
     dic_real[constituency] = array_real
     dic_predicted[constituency] = array_pred
