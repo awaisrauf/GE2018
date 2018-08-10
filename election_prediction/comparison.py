@@ -79,6 +79,7 @@ for constituency in constituencies_real:
     constituency_cordinate_X = cordinates[cordinates["seat"] == constituency]["X"].tolist()[0]
     constituency_cordinate_Y = cordinates[cordinates["seat"] == constituency]["Y"].tolist()[0]
     original_party = real_result[real_result["Constituency"]==constituency]["Party"].tolist()[0]
+    orignial_label = original_party+":"+":"+constituency+":"+constituency_name
     constituency_name = df_NA_list_2018[df_NA_list_2018["Constituency Number (ID)"]==constituency]["Constituency Name"].tolist()
     try:
         constituency_name = constituency_name[0]
@@ -87,14 +88,16 @@ for constituency in constituencies_real:
     # to avoid having [] inspite of partyy    
     if(pred_result[pred_result["Constituency"]==constituency]["Party"].tolist()):
         predicted_party = pred_result[pred_result["Constituency"]==constituency]["Party"].tolist()[0]
+        predicted_label = predicted_party+":"+":"+constituency+":"+constituency_name
     else:
         predicted_party = "PML-N"
-    print(constituency,predicted_party)
-    array_real = [constituency_cordinate_X,constituency_cordinate_Y,original_party,party_to_number[original_party],constituency, constituency_name]
+        predicted_label = predicted_party+":"+":"+constituency+":"+constituency_name
+    #print(constituency,predicted_party)
+    array_real = [constituency_cordinate_X,constituency_cordinate_Y,orignial_label,party_to_number[original_party]]
     if(predicted_party in all_parties):
-        array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_party,party_to_number[predicted_party],constituency, constituency_name]
+        array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_label,party_to_number[predicted_party]]
     else:
-        array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_party,6,constituency, constituency_name]
+        array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_label,6,constituency, constituency_name]
 
     dic_real[constituency] = array_real
     dic_predicted[constituency] = array_pred
