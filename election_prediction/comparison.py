@@ -43,13 +43,22 @@ def real_results():
 df_NA_list = pd.read_csv("results/real_result.csv") 
 all_parties = df_NA_list["Party"].value_counts().index.tolist()
 party_to_number = {}
-i = 100
+i = 50
 for party in all_parties:
-    if(i<106):
+    if(i<56):
         party_to_number[party] = i                   
         i +=1
     else:
-        party_to_number[party] = 107
+        party_to_number[party] = 57
+party_to_number["PKMAP"] = 57
+party_to_number["Ch.Nissar"] = 57 
+party_to_number["TLP"] = 57
+party_to_number["GDA"] = 57 
+party_to_number["Barabri Party Pakistan"] = 57 
+party_to_number["PSP"] = 57 
+party_to_number["Amun Taraqqi Party"] = 57 
+party_to_number["Pakistan Rah-e-Haq Pak"] = 57 
+
                
 
 real_results()
