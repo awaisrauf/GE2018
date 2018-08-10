@@ -15,6 +15,7 @@ df_NA_list_2018 = NA_list_preprocessed()
 
 def real_results():
     df_NA_list = Result_2018()
+    constituencies = df_NA_list.seat.unique().tolist()
     # Results Data Frame
     list_results = []
     for constituency in constituencies:  
@@ -42,16 +43,16 @@ def real_results():
 df_NA_list = pd.read_csv("results/real_result.csv") 
 all_parties = df_NA_list["Party"].value_counts().index.tolist()
 party_to_number = {}
-i = 0
+i = 100
 for party in all_parties:
-    if(i<6):
+    if(i<106):
         party_to_number[party] = i                   
         i +=1
     else:
-        party_to_number[party] = 6
+        party_to_number[party] = 107
                
 
-
+real_results()
 constituencies = df_NA_list["Constituency"].unique()
 constituencies = np.asarray(constituencies)
 cordinates = pd.read_csv("data\\Election_2018_Stats\\NA_2018_centroids.csv")
@@ -105,4 +106,25 @@ with open( os.path.join("results","result_real.json"), "w") as write_file:
             json.dump(dic_real, write_file)
 
 with open( os.path.join("results","result_predicted.json"), "w") as write_file:
-            json.dump(dic_predicted, write_file)            
+            json.dump(dic_predicted, write_file)         
+#==============================================================================
+#  Finds accuraccy            
+#==============================================================================
+def accuracy():
+    real_result = pd.read_csv("results\\real_result.csv")
+    pred_result = pd.read_csv("results\\dunya_result_party.csv")   
+    constituencies =  real_result["Constituency"].unique().tolist()
+    score = 0
+    non_score = 0
+    for constituency in constituencies:
+       try:
+           pred_party = pred_result[pred_result["Constituency"] == constituency]["Party"].tolist()[0]
+           real_party = real_result[real_result["Constituency"] == constituency]["Party"].tolist()[0]
+           if( real_party==pred_party ):
+               score +=1   
+       except:
+           print(constituency)
+           non_score +=1
+       
+       
+    return score,non_score       

@@ -133,11 +133,11 @@ def NA_list_preprocessed():
     df_constituency = df_NA_list["Constituency Name"].str.strip()    # remove leading spaces
     cities = (df_constituency.str.split(" "))                        # strips names based on spaces
     cities_1 = pd.DataFrame(cities.values.tolist()).add_prefix('constituency_')  # retain column that only have district name
-    cities_1  = cities_1.drop(cities_1.columns[[1, 2, 3, 4, 5]],axis=1)
-    cities_1 = cities_1["constituency_0"].str.split("-")
+    cities_1  = cities_1[cities_1.columns[0]]
+    cities_1 = cities_1.str.split("-")
     cities_1 = pd.DataFrame(cities_1.values.tolist()).add_prefix('constituency_')
-    cities_1  = cities_1.drop(cities_1.columns[[1, 2, 3, 4 ]],axis = 1)
-    df_NA_list["District"] = cities_1["constituency_0"].str.lower()
+    cities_1  = cities_1[cities_1.columns[0]]
+    df_NA_list["District"] = cities_1.str.lower()
     
     # solving mismatching districts problem
     replacement_districts = {
@@ -148,6 +148,7 @@ def NA_list_preprocessed():
             "d.g.":"dgkhan",
             "d.i.khan":"dikhan",
             "gujrnawala":"guranwala",
+            "shaheed":"nawabshah",
             "sba":"jaffarabad",
             "bolan":"kachhi",
             "lower.dir":"lower",
@@ -179,17 +180,31 @@ def NA_list_preprocessed():
 # Fills nan values in party column with IND = Independent
 #==============================================================================
 def Perevious_results_preprocessed():
-    df_perevious_results = pd.read_csv("E:\Semester3\GE2018\election\data\Perevious_Results\Previous_Elections_1997-2013.csv")
+    df_election_result_97 = pd.read_csv("E:\Semester3\GE2018\GE2018\election_prediction\data\Perevious_Results\election_results_1997.csv")
+    df_election_result_02_13 = pd.read_csv("E:\Semester3\GE2018\GE2018\election_prediction\data\Perevious_Results\election_results_2002-2013.csv")
 
+    #frames = [df_election_result_97,df_election_result_02_13]
+    #df_perevious_results = pd.concat(frames)
+    #df_election_result_97_13 = df_perevious_results
+    #df_perevious_results.to_csv("data\Perevious_Results\election_result123")
+    #df_perevious_results = pd.read_csv("data\Perevious_Results\election_results_1997.csv")
+    #df_perevious_results = pd.read_csv("data\Perevious_Results\election_result123.csv")
+    df_perevious_results =df_election_result_02_13
+    df_perevious_results["Party"] = df_perevious_results["Party"].fillna(value="IND")
+    df_perevious_results["Votes"] = df_perevious_results["Votes"].fillna(value=0)
+    df_perevious_results = df_perevious_results.dropna()
     # add a district as a new column by preprocessing constituency name
     df_constituency = df_perevious_results["constituency"].str.strip()
     cities = (df_constituency.str.split(" "))
+    #cities = cities.astype(str)
     abc = pd.DataFrame(cities.values.tolist()).add_prefix('constituency_')
-    abc  = abc.drop(abc.columns[[0, 2, 3, 4, 5, 6]], axis=1)
-    abc = abc["constituency_1"].str.split("-")
+    constituency = abc[abc.columns[0]]
+    abc  = abc[abc.columns[1]]
+    abc = abc.str.split("-")
     abc = pd.DataFrame(abc.values.tolist()).add_prefix('constituency_')
-    abc  = abc.drop(abc.columns[[1, 2, 3, 4, 5, 6]], axis=1)
-    df_perevious_results["District"] = abc["constituency_0"].str.lower()
+    abc  = abc[abc.columns[0]]
+    df_perevious_results["District"] = abc.str.lower()
+    df_perevious_results["Constituency"] = constituency
     # solving mismatching districts problem
     replacement_districts = {
             "gwadar": "gawadar",
@@ -236,6 +251,7 @@ def Perevious_results_preprocessed():
 #==============================================================================
 def Result_2018():
     df_result_2018 = pd.read_csv("E:\Semester3\GE2018\GE2018\election_prediction\data\Election_2018_Stats\Election_result_2018.csv")
+    df_NA_18 = pd.read_csv("E:\\Semester3\\GE2018\\GE2018\\election_prediction\\data\\\Election_2018_Stats\\NA_list.csv")    
     # fill na values with values above
     df_result_2018 = df_result_2018.fillna(method="ffill")
     
