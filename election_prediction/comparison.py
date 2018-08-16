@@ -128,19 +128,22 @@ with open( os.path.join("results","result_predicted.json"), "w") as write_file:
 #==============================================================================
 def accuracy():
     real_result = pd.read_csv("results\\real_result.csv")
-    pred_result = pd.read_csv("results\\dunya_result_party.csv")   
+    pred_result = pd.read_csv("results\\result_party.csv")   
     constituencies =  real_result["Constituency"].unique().tolist()
     score = 0
     non_score = 0
+    wrong_score = 0
     for constituency in constituencies:
        try:
            pred_party = pred_result[pred_result["Constituency"] == constituency]["Party"].tolist()[0]
            real_party = real_result[real_result["Constituency"] == constituency]["Party"].tolist()[0]
            if( real_party==pred_party ):
-               score +=1   
+               score +=1 
+           else:
+               wrong_score +=1
        except:
            print(constituency)
            non_score +=1
-       
+    print(wrong_score)    
        
     return score,non_score       

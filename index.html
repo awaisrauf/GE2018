@@ -14,39 +14,83 @@ container{
     width:100%;
     position:absolute;
 }
-div.a {
+div.paragraph {
     text-align: left;
     margin-left: 20%;
     margin-right:20%;
 }
-div.b{
+div.title{
 	text-align:center;
 	margin-left: 10%;
     margin-right:10%;
 
 }
-
+.dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.PTI{
+    background-color: #FF0000;
+}
+.PML-N{
+    background-color: green;
+}
+.PPPP{
+    background-color: #000000;
+}
+.MMA{
+    background-color: #fff;
+}
+.IND{
+    background-color: #FFFF00;
+}
+.Others{
+    background-color: #800080;
+}
+object {
+  overflow-x: false;
+  overflow-y: hidden;
+}
+.map{
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+}
 </style>
 <body>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
-<div class="b">
-<h3 class="b">Seats Projection for National Assembly</h3>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<div class="title">
+<h3 class="title">Seats Projection for National Assembly</h3>
 </div>
-<div class="a">
+<div class="paragraph">
 
 <p>Pakistan is holding it general election on 25 July 2018 for its national as well as provincial assembly.
  We have leveraged some machine learning and data science techniques to project seats for national assembly.
  Following Graph shows an overall projection for national assembly seats. </p>
 </div>
+
 <div id="overallProjection" ></div>
 <script src="js/projection.js"></script>
+<div  class = "title">
+<h2>Dot Map Representation</h2>
+<div>
+<div id="map">
+<object style="width: 100%; height: 100%; overflow:hidden; type="text/html" data="map.html"></object>
 
-<div class="b">
-<h3 class="b">Popularity Trends of Major Political Parties</h3>
+</class>
+
+
+
+<div class="title">
+<h3 class="title">Popularity Trends of Major Political Parties</h3>
 </div>
-<div class="a">
+<div class="paragraph">
 
 <p>We also have monitored twitter to gage changing popularity levels of top three political parities. Following graphs 
 shows changing popularity trends over the days. </p>

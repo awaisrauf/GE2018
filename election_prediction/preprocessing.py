@@ -183,13 +183,13 @@ def Perevious_results_preprocessed():
     df_election_result_97 = pd.read_csv("E:\Semester3\GE2018\GE2018\election_prediction\data\Perevious_Results\election_results_1997.csv")
     df_election_result_02_13 = pd.read_csv("E:\Semester3\GE2018\GE2018\election_prediction\data\Perevious_Results\election_results_2002-2013.csv")
 
-    #frames = [df_election_result_97,df_election_result_02_13]
-    #df_perevious_results = pd.concat(frames)
+    frames = [df_election_result_97,df_election_result_02_13]
+    df_perevious_results = pd.concat(frames)
     #df_election_result_97_13 = df_perevious_results
     #df_perevious_results.to_csv("data\Perevious_Results\election_result123")
     #df_perevious_results = pd.read_csv("data\Perevious_Results\election_results_1997.csv")
     #df_perevious_results = pd.read_csv("data\Perevious_Results\election_result123.csv")
-    df_perevious_results =df_election_result_02_13
+    #df_perevious_results =df_election_result_02_13
     df_perevious_results["Party"] = df_perevious_results["Party"].fillna(value="IND")
     df_perevious_results["Votes"] = df_perevious_results["Votes"].fillna(value=0)
     df_perevious_results = df_perevious_results.dropna()
