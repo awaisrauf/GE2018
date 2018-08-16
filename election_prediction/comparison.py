@@ -43,10 +43,10 @@ def real_results():
 df_NA_list = pd.read_csv("results/real_result.csv") 
 all_parties = df_NA_list["Party"].value_counts().index.tolist()
 party_to_number = {}
-i = 10
-other = 16
+i = 5
+other = 11
 for party in all_parties:
-    if(i<16):
+    if(i<11):
         party_to_number[party] = i                   
         i +=1
     else:

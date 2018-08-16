@@ -31,7 +31,7 @@ function drawChart() {
                 region: 'PK',
                 colorAxis: {
                 colors: ['#FF0000', '#008000', '#000000', '#fff', '#FFFF00','#FFA500','#800080'],
-                values: [10, 11, 12, 13,14,15,16]
+                values: [5, 6, 7, 8,9,10,11]
                 },
                 tooltip: { textStyle: { fontName: '"Verdana"', fontSize: 14 } },
                 keepAspectRatio: true,
