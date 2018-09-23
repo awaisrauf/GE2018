@@ -6,6 +6,7 @@ Created on Tue Jul 10 21:13:56 2018
 """
 import json
 import os
+import numpy as np
 
 '''
 Return percentage result common parties.
@@ -201,3 +202,17 @@ def save_results_in_website_format():
     
     with open( os.path.join(dir_name_save,"balouchistan.json"), "w") as write_file:
             json.dump(Results_balouchistan, write_file)  
+def Total_tweets():
+    current_dir = os.getcwd()
+    dir_name_pakistan = os.path.join(current_dir,'results\Pakistan\original')            
+    list_of_files_pakistan = os.listdir(dir_name_pakistan)
+    Total_Tweets = 0
+    Urdu_Tweets = 0
+    for file in list_of_files_pakistan:
+        ## Load Results from relative file
+        with open(os.path.join(dir_name_pakistan,file)) as json_data:
+            results = json.load(json_data)
+        #     
+        Total_Tweets += np.array(results[ "NumberTweets"])
+        Urdu_Tweets += np.array(results[ "UrduTweets"])
+    return Total_Tweets, Urdu_Tweets    

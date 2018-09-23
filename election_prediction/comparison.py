@@ -146,4 +146,11 @@ def accuracy():
            non_score +=1
     print(wrong_score)    
        
-    return score,non_score       
+    return score,non_score
+# =============================================================================
+# Finds votes difference between predicted and actual       
+# =============================================================================
+def results_province():
+    real_result = pd.read_csv("data\Election_2018_Stats\Election_result_2018.csv")
+    pred_result = pd.read_csv()
+    

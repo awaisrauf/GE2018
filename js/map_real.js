@@ -1,5 +1,5 @@
 
-var url="https://raw.githubusercontent.com/awaisrauf/GE2018/master/election_prediction/results/result_predicted.json";
+var url="https://raw.githubusercontent.com/awaisrauf/GE2018/master/election_prediction/results/result_real.json";
 
 var request = new XMLHttpRequest();
 request.open("GET", url, false);
@@ -35,8 +35,8 @@ function drawChart() {
                 },
                 tooltip: { textStyle: { fontName: '"Verdana"', fontSize: 14 } },
                 keepAspectRatio: true,
-                height: 1200,
-                width: 800,
+                height: 600,
+                width: 1000,
                 legend: false,
             }
     
