@@ -8,7 +8,7 @@ This is an implementation of the model used for breast cancer classification as 
 
 Both models act on screening mammography exams with four standard views (L-CC, R-CC, L-MLO, R-MLO). As a part of this repository, we provide 4 sample exams (in `sample_data/images` directory and exam list stored in `sample_data/exam_list_before_cropping.pkl`). Heatmap generation model and cancer classification models are implemented in PyTorch. 
 
-![alt text](http://url/to/img.png)
+![alt text](https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/cermony.jpg)
 
 
 ## Prerequisites
