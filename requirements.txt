@@ -1,0 +1,7 @@
+scipy==0.18.1
+matplotlib==2.0.0
+pandas==0.19.2
+tqdm==4.28.1
+numpy==1.11.3
+bayesian_optimization==0.6.0
+thesis==0.0.01
