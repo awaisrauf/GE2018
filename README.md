@@ -1,5 +1,12 @@
 # Predicting 2018 Pakistani Election using a Novel Rigged Model
 This page is taken from [this project](.).
+<p align="center">
+  <img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/map.png" alt="prediction"/>
+ 
+  ```
+  Election results as predicted by our model before elections vs original results.
+  ```
+</p>
 ## Introduction
 This is an implementation of the model used for breast cancer classification as described in our paper [Deep Neural Networks Improve Radiologists' Performance in Breast Cancer Screening](https://arxiv.org/abs/1903.08297). The implementation allows users to get breast cancer predictions by applying one of our pretrained models: a model which takes images as input (*image-only*) and a model which takes images and heatmaps as input (*image-and-heatmaps*). 
 
