@@ -1,5 +1,4 @@
 # Predicting 2018 Pakistani Election using a Novel Rigged Model
-This page is taken from [this project](.).
 <p align="center">
   <img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/map.jpg" alt="prediction"  />
  
@@ -11,7 +10,9 @@ This page is taken from [this project](.).
 ## Introduction
 
 Find more about this code [here](https://awaisrauf.github.io/election_prediction)
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/cermony.jpg" alt="cermony"  />
+</p>
 ## Prerequisites
 
 * scipy 0.18.1
