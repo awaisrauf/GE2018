@@ -13,6 +13,8 @@ Find more about this code [here](https://awaisrauf.github.io/election_prediction
 <p align="center">
   <img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/cermony.jpg" alt="cermony"  />
 </p>
+
+
 ## Prerequisites
 
 * scipy 0.18.1
