@@ -3,13 +3,13 @@
   <img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/map.jpg" alt="prediction"  />
  
   ```
-  Election results as predicted by our model before elections vs original results.
+  Election results as predicted by this model before elections vs original results.
   ```
 </p>
 
 ## Introduction
 
-Find more about this code [here](https://awaisrauf.github.io/election_prediction)
+This repository contains code for the election prediction model that was used to predict 2018's general election of Pakistan and won first prize in nation-wide data science competiton. Paper based on this model is accepted in the special issue of Spriger's journal on Big Data and Politics. Find more about this model [here](https://awaisrauf.github.io/election_prediction).
 <p align="center">
   <img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/cermony.jpg" alt="cermony"  />
 </p>
@@ -31,6 +31,8 @@ This repository is licensed under the terms of the GNU AGPLv3 license.
 
 ## How to run the code
 ```
+cd GE2018
+pip install -r requirements.txt
 python main.py
 ```
 

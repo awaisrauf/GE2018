@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Aug  3 16:34:56 2018
-
-@author: ss
+@descrption: Compares predicted results with the origianl reults
+@author: Awais
 """
 import pandas as pd
 import json
 import os
 import numpy as np
+import time
 from preprocessing import Vote_distribution_preprocessed,Result_2018,NA_list_preprocessed
+from la import l2_Exact, l1_LP
+from model import final_model
+
 
 df_NA_list_2018 = NA_list_preprocessed()
-
-
+#==============================================================================
+#  processes on real results taken from Pakistan's Election Commission           
+#==============================================================================
 def real_results():
     df_NA_list = Result_2018()
     constituencies = df_NA_list.seat.unique().tolist()
@@ -39,98 +43,15 @@ def real_results():
     # save results to csv
     df_results.to_csv("results/real_result.csv",index=False) 
 
-
-#df_NA_list = pd.read_csv("results/real_result.csv") 
-#all_parties = df_NA_list["Party"].value_counts().index.tolist()
-#party_to_number = {}
-#i = 5
-#other = 11
-#for party in all_parties:
-#    if(i<11):
-#        party_to_number[party] = i                   
-#        i +=1
-#    else:
-#        party_to_number[party] = other
-#party_to_number["PKMAP"] = other
-#party_to_number["Ch.Nissar"] = other
-#party_to_number["TLP"] = other
-#party_to_number["GDA"] = other
-#party_to_number["Barabri Party Pakistan"] = other 
-#party_to_number["PSP"] = other 
-#party_to_number["Amun Taraqqi Party"] = other 
-#party_to_number["Pakistan Rah-e-Haq Pak"] = other 
-#
-#               
-#
-#real_results()
-#constituencies = df_NA_list["Constituency"].unique()
-#constituencies = np.asarray(constituencies)
-#cordinates = pd.read_csv("data\\Election_2018_Stats\\NA_2018_centroids.csv")
-#real_result = pd.read_csv("results\\real_result.csv")
-#pred_result = pd.read_csv("results\\result_party.csv")
-#constituencies_real = real_result["Constituency"]
-#constituencies_pred = pred_result["Constituency"]
-#
-#
-#
-#
-#dic_predicted = {}
-#dic_real = {}
-#for constituency in constituencies_real:   
-#    constituency_cordinate_X = cordinates[cordinates["seat"] == constituency]["X"].tolist()[0]
-#    constituency_cordinate_Y = cordinates[cordinates["seat"] == constituency]["Y"].tolist()[0]
-#    original_party = real_result[real_result["Constituency"]==constituency]["Party"].tolist()[0]
-#    constituency_name = df_NA_list_2018[df_NA_list_2018["Constituency Number (ID)"]==constituency]["Constituency Name"].tolist()
-#    try:
-#        orignial_label = original_party+":"+":"+constituency+":"+constituency_name[0]
-#    except:
-#        orignial_label = original_party+":"+":"+constituency
-#    try:
-#        constituency_name = constituency_name[0]
-#    except:
-#        constituency_name = "" 
-#    # to avoid having [] inspite of partyy    
-#    if(pred_result[pred_result["Constituency"]==constituency]["Party"].tolist()):
-#        predicted_party = pred_result[pred_result["Constituency"]==constituency]["Party"].tolist()[0]
-#        predicted_label = predicted_party+":"+":"+constituency+":"+constituency_name
-#    else:
-#        predicted_party = "PML-N"
-#        predicted_label = predicted_party+":"+":"+constituency+":"+constituency_name
-#    #print(constituency,predicted_party)
-#    array_real = [constituency_cordinate_X,constituency_cordinate_Y,orignial_label,party_to_number[original_party]]
-#    if(predicted_party in all_parties):
-#        array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_label,party_to_number[predicted_party]]
-#    else:
-#        array_pred = [constituency_cordinate_X,constituency_cordinate_Y,predicted_label,other]
-#
-#    dic_real[constituency] = array_real
-#    dic_predicted[constituency] = array_pred
-#    
-#
-#original_party = "Election Delyaed"      
-#dic_real["NA-60"]= [0,0,original_party,0,"NA-60","Rawalpinid"]
-#dic_predicted["NA-60"]= [0,0,original_party,0,"NA-60","Rawalpinid"]
-#
-#original_party = "Election Delyaed"      
-#dic_real["NA-103"]= [0,0,original_party,0,"NA-103","Faisalabad"]
-#dic_predicted["NA-103"]= [0,0,original_party,0,"NA-103","Faisalabad"]
-#
-#
-#
-#
-#with open( os.path.join("results","result_real.json"), "w") as write_file:
-#            json.dump(dic_real, write_file)
-#
-#with open( os.path.join("results","result_predicted.json"), "w") as write_file:
-#            json.dump(dic_predicted, write_file)         
+   
 #==============================================================================
 #  Finds accuraccy            
 #==============================================================================
 def accuracy_seat_wise(pred_result=None):
     
-    real_result = pd.read_csv("results\\real_result.csv")
+    real_result = pd.read_csv("data\\results\\real_result.csv")
     if pred_result is None:
-        pred_result = pd.read_csv("results\\result_party.csv") 
+        pred_result = pd.read_csv("data\\results\\result_party.csv") 
     else:
         pred_result = pred_result
     constituencies =  real_result["Constituency"].unique().tolist()
@@ -151,11 +72,13 @@ def accuracy_seat_wise(pred_result=None):
     print(wrong_score)    
        
     return score
+	
+	
 # =============================================================================
 # find accuracy party share wise
 # =============================================================================
 def accuracy_share_wise(pred_result):
-    real_result = pd.read_csv("results\\real_result.csv")
+    real_result = pd.read_csv("data\\results\\real_result.csv")
     real_result_party_wise = real_result["Party"].value_counts()
     parties = ["PTI","PML-N","PPPP","MMA"]
     error,pred_total,real_total  = 0,0,0
@@ -165,10 +88,40 @@ def accuracy_share_wise(pred_result):
         real_total += pred_result[party]
     error += abs(pred_total-real_total)
     return 270-error
+	
+	
 # =============================================================================
 # Finds votes difference between predicted and actual       
 # =============================================================================
 def results_province():
     real_result = pd.read_csv("data\Election_2018_Stats\Election_result_2018.csv")
     pred_result = pd.read_csv()
+	
+	
+	
+# =============================================================================
+# Compare different methods
+# =============================================================================
+def compare_methods(method):
+    # l1 norm: Bayesian optimization
+    print("Starting..")
+    start_time = time.time()
+    if  method == "L1-BO":
+        paras = parameter_serach(iters=15,norm="l1")
+    elif method == "L1-LP":
+        paras = l1_LP()
+    elif method == "L2-EX":
+        paras = l2_Exact()
+    elif method == "L2-BO":
+        paras = parameter_serach(iters=15,norm="l1")
+        
+    party_wise_result, seat_wise_result = final_model(paras[:12])
+    end_time = time.time()
+    print(end_time)
+    time_taken = end_time-start_time
+    acc_share = accuracy_share_wise(party_wise_result)
+    acc_seat = accuracy_seat_wise(seat_wise_result)
+    
+    result = [method,acc_seat,acc_share,time_taken]
+    return result	
     

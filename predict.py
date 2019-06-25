@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jul 21 04:24:29 2018
-@author: Awais: awaisrauf.github.io
+@author: Awais
 @descrption: This file contains all the functions that assigns probabilities to individual constituencies 
              based on different data sources. Second part of function shows data source such as predict_gallup 
              predicts based on different gallup surveys. Output is a list of lenght equal to number of candidate
@@ -27,7 +26,7 @@ def predict_random(constituency_data):
 # predicts based on gallup and ipor surveys
 #==============================================================================
 def predict_gallup(constituency_data, survey_name = "Gallup_2018_1.csv"):
-    df_gallup_survey = pd.read_csv(os.path.join("E:\\Election Prediction Contest 2018 Data\\Clean Data\Gallup_Surveys",survey_name))
+    df_gallup_survey = pd.read_csv(os.path.join(".\data\Gallup_Surveys\\",survey_name))
     constituency_number = constituency_data["Constituency Number (ID)"].iloc[0]
     constituency_number = str(constituency_number).split(" ")[0]
     province = constituency_data["Province"].iloc[0]
@@ -66,7 +65,7 @@ def predict_gallup(constituency_data, survey_name = "Gallup_2018_1.csv"):
 # Predicts constituency results based on dunya news results
 #==============================================================================
 def predict_dunya(constituency_data):
-    df_dunya_survey = pd.read_csv("E:\Semester3\GE2018\election\data\Gallup_Surveys\Dunya_2018_1.csv")
+    df_dunya_survey = pd.read_csv("data\Gallup_Surveys\Dunya_2018_1.csv")
     # constituency data
     constituency_number = constituency_data["Constituency Number (ID)"].iloc[0]
     constituency_number = str(constituency_number).split(" ")[0]

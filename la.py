@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jan 23 13:24:11 2019
-
-@author: ss
+@description: Uses different linear algebra techniques instead of Bayesian Optimization. 
+@author: Awais
 """
 
 import numpy as np
-from predict import predict_random,predict_gallup, predict_dunya,predict_partyHistory,predict_districtHistory,predict_twitter
-from preprocessing import NA_list_preprocessed
 from bayes_opt import BayesianOptimization
 import matplotlib.pyplot as plt
 from matplotlib import gridspec
 from scipy.optimize import linprog
 
-#from tqdm import tqdm
+from tqdm import tqdm
+from predict import predict_random,predict_gallup, predict_dunya,predict_partyHistory,predict_districtHistory,predict_twitter
+from preprocessing import NA_list_preprocessed
+
 
 # =============================================================================
 # maximum dimension of A matrix
@@ -36,8 +36,9 @@ def max_dim_A():
 
         return max_dim_A
 
+
 # =============================================================================
-# 
+# computes matrix A from the data 
 # =============================================================================
 def matrix_A():
     para0,para1,para2,para3,para4,para5,para6,para7,para8,para9,para10,para11 = 1,1,1,1,1,1,1,1,1,1,1,1
@@ -78,6 +79,8 @@ def matrix_A():
         A[:can.shape[0],:can.shape[1]] = can
         A =  np.nan_to_num(A,0)
     return A,Y
+	
+	
 # =============================================================================
 # solves ||y-Ax||2 with pseudo inverse
 # =============================================================================
@@ -89,13 +92,12 @@ def l2_Exact():
     x = x/np.abs(x).sum()   
     return x
 
+
 # =============================================================================
 # solves ||y-Ax||1 with linear programming
 # =============================================================================
 def l1_LP():
     A,Y = matrix_A()
-    
-    
     M1 = np.concatenate((-A,-np.eye(A.shape[0],A.shape[1])),1)
     M2 = np.concatenate((A,-np.eye(A.shape[0],A.shape[1])),1)
     M = np.concatenate((M1,M2),0).T
@@ -136,3 +138,8 @@ def l1_LP():
     x = linprog(c,M,b,bounds=bounds)#,method="interior-point")
     x_optim = x['x'][12:]
     return x_optim
+	
+	
+	
+if __name__ == "__main__": 	
+	l2_Exact()

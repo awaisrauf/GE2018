@@ -94,9 +94,9 @@ def results_to_party(file_path):
         party_list.append(party)
     
     df_result_1["Party"] = party_list
-    df_result_1.to_csv("results/result_party.csv",index=False)
+    df_result_1.to_csv("data\\results/result_party.csv",index=False)
     party_distribution = df_result_1["Party"].value_counts()
-    party_distribution.to_csv("results/parties_result.csv",index=True)
+    party_distribution.to_csv("data\\results/parties_result.csv",index=True)
     print(party_distribution)
     party_result = df_result_1
     return party_result, party_distribution
