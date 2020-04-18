@@ -9,13 +9,13 @@
 
 ## Introduction
 
-This repository contains code for the election prediction model that was used to predict 2018's general election of Pakistan and won first prize in nation-wide data science competiton. Paper based on this model is accepted in the special issue of Spriger's journal on Big Data and Politics. Find more about this model [here](https://awaisrauf.github.io/election_prediction).
+This repository contains code for the election prediction model to predict 2018's general election of Pakistan and **won first prize in nation-wide data science competiton**. Paper based on this model is accepted in the special issue of Spriger's journal on Big Data and Politics. Find more about this model [here](https://awaisrauf.github.io/election_prediction).
 <p align="center">
   <img src="https://raw.githubusercontent.com/awaisrauf/GE2018/master/imgs/cermony.jpg" alt="cermony"  />
 </p>
 
 
-## Prerequisites
+## Dependencies 
 
 * scipy 0.18.1
 * matplotlib 2.0.0
@@ -25,9 +25,6 @@ This repository contains code for the election prediction model that was used to
 * bayesian_optimization 0.6.0
 * thesis 0.0.01
 
-## License
-
-This repository is licensed under the terms of the GNU AGPLv3 license.
 
 ## How to run the code
 ```
@@ -38,6 +35,7 @@ python main.py
 
 
 ## Reference
+
 Please cite this.
 ```
 @article{awais2019leveraging,
@@ -49,3 +47,7 @@ Please cite this.
   publisher={Springer}
 }
 ```
+
+## License
+
+This repository is licensed under the terms of the GNU AGPLv3 license.
