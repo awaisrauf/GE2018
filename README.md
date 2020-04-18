@@ -39,7 +39,7 @@ python main.py
 
 ## Reference
 Please cite this.
-
+```
 @article{awais2019leveraging,
   title={Leveraging big data for politics: predicting general election of Pakistan using a novel rigged model},
   author={Awais, Muhammad and Hassan, Saeed-Ul and Ahmed, Ali},
@@ -48,3 +48,4 @@ Please cite this.
   year={2019},
   publisher={Springer}
 }
+```
