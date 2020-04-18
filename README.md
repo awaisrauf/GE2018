@@ -38,6 +38,13 @@ python main.py
 
 
 ## Reference
+Please cite this.
 
-Reference will be here as soon as paper got pbulished. 
-****  ****
+@article{awais2019leveraging,
+  title={Leveraging big data for politics: predicting general election of Pakistan using a novel rigged model},
+  author={Awais, Muhammad and Hassan, Saeed-Ul and Ahmed, Ali},
+  journal={Journal of Ambient Intelligence and Humanized Computing},
+  pages={1--9},
+  year={2019},
+  publisher={Springer}
+}
